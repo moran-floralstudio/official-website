@@ -114,7 +114,17 @@ node --test tests/*.test.mjs
 
 ## 部署界線
 
-- Cloudflare Pages 的建置命令留空，輸出目錄指向本資料夾。
+Pages 專案 `moran-floralstudio` 已連線至 `moran-floralstudio/official-website`，生產分支 `main`，push 即自動部署。
+
+| 設定 | 值 | 原因 |
+|---|---|---|
+| Framework 預設 | 無 | 純靜態，無前端建置 |
+| 組建輸出目錄 | `/`（留空） | 站台檔案就在 repo 根目錄 |
+| 根目錄 | 留空 | 同上 |
+| 組建命令 | `rm -rf docs` | 見下 |
+
+**為什麼組建命令是一行 `rm`**：輸出目錄是 repo 根目錄，所以根目錄下的每個檔案都會被當成公開靜態資源上傳。`docs/` 是給開發者看的規格文件，不該被搜尋引擎索引，因此在組建階段從工作目錄移除（只影響 Cloudflare 的暫存 clone，不動 repo）。若日後也要排除 `tests/`、`scripts/`、`README.md`，加到同一行即可。
+
 - 部署前先設定 `BOOKING_WEBHOOK_URL`、三個管理 secrets 與 `SITE_CONTENT` R2 binding。
 - 部署後必須實際檢查首頁、手機版、圖片、`robots.txt`、`sitemap.xml` 與預約成功／失敗流程。
 - 本機 HTTP 200、單元測試通過或畫面截圖，不等同於 Cloudflare 與 Google Apps Script 的正式環境驗證。
