@@ -19,6 +19,9 @@
   <link rel="alternate" hreflang="zh-Hant-TW" href="https://moran-floral.studio/">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="/assets/images/hero/hero-main-v1.webp" as="image" type="image/webp" fetchpriority="high">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Serif+TC:wght@200;300;400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -33,245 +36,335 @@
   <style>
     :root {
       color-scheme: light;
-      --paper: #f5f3ef;
-      --paper-2: #e8e4dd;
-      --ink: #2b3540;
-      --muted: #525b64;
-      --blue: #5b738e;
-      --blue-dark: #44586f;
-      --sage: #8fa08e;
-      --clay: #b38a7d;
-      --line: rgba(91, 115, 142, .2);
-      --surface: rgba(255, 255, 255, .4);
-      --shadow: 0 24px 70px rgba(43, 53, 64, .13);
-      --heading: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
-      --body: "Noto Serif TC", "PMingLiU", serif;
+      --paper: #e9e4da;
+      --ink: #14120f;
+      --muted: rgba(20, 18, 15, .6);
+      --faint: rgba(20, 18, 15, .38);
+      --line: rgba(20, 18, 15, .14);
+      --sumi: #14120f;
+      --sumi-ink: #ede8de;
+      --sumi-line: rgba(233, 228, 218, .14);
+      --accent: #5f6f63;
+      --img-bg: #d6d0c4;
+      --shadow: 0 30px 80px rgba(0, 0, 0, .3);
+      --serif: "Noto Serif TC", "PMingLiU", serif;
+      --display: "Cormorant Garamond", "Noto Serif TC", serif;
+      --sans: "Jost", "Noto Sans TC", system-ui, sans-serif;
+      --ease: cubic-bezier(.16, .84, .3, 1);
+      --max: 1560px;
+      --pad: 44px;
     }
     html.dark {
       color-scheme: dark;
-      --paper: #121a22;
-      --paper-2: #2a3a4a;
-      --ink: #f4f3ee;
-      --muted: rgba(244, 243, 238, .72);
-      --blue: #b38a7d;
-      --blue-dark: #9e7467;
-      --clay: #c69b8d;
-      --line: rgba(244, 243, 238, .14);
-      --surface: rgba(42, 58, 74, .48);
-      --shadow: 0 24px 70px rgba(0, 0, 0, .32);
+      --paper: #14120f;
+      --ink: #ede8de;
+      --muted: rgba(237, 232, 222, .6);
+      --faint: rgba(237, 232, 222, .38);
+      --line: rgba(237, 232, 222, .14);
+      --sumi: #0b0a08;
+      --img-bg: #2a2620;
     }
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 86px; }
+    html { scroll-behavior: smooth; scroll-padding-top: 120px; }
     body {
       margin: 0;
       overflow-x: hidden;
-      background:
-        radial-gradient(rgba(91,115,142,.05) 1px, transparent 1px) 0 0 / 28px 28px,
-        var(--paper);
+      background: var(--paper);
       color: var(--ink);
-      font-family: var(--body);
-      letter-spacing: .045em;
-      line-height: 1.8;
-      transition: background-color .3s ease, color .3s ease;
+      font-family: var(--serif);
+      font-weight: 300;
+      line-height: 2;
+      transition: background-color .8s ease, color .8s ease;
     }
     body.modal-open { overflow: hidden; }
-    h1, h2, h3, h4, button, .heading { font-family: var(--heading); }
-    h1, h2, h3, h4, p { margin-top: 0; }
-    a { color: inherit; }
+    h1, h2, h3 { margin: 0; font-weight: 200; }
+    p { margin: 0; }
+    a { color: inherit; text-decoration: none; }
     img { display: block; max-width: 100%; }
-    button, input, select, textarea { font: inherit; }
+    button, input, select, textarea { font: inherit; color: inherit; }
     button { cursor: pointer; }
-    button:disabled { cursor: wait; opacity: .65; }
-    :focus-visible { outline: 3px solid var(--clay); outline-offset: 3px; }
-    .skip-link { position: fixed; top: -80px; left: 16px; z-index: 100; padding: 10px 16px; background: var(--ink); color: var(--paper); }
+    button:disabled { cursor: wait; opacity: .6; }
+    ::selection { background: var(--ink); color: var(--paper); }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+    .skip-link { position: fixed; top: -80px; left: 16px; z-index: 120; padding: 12px 18px; background: var(--ink); color: var(--paper); font: 300 12px/1 var(--sans); letter-spacing: .2em; }
     .skip-link:focus { top: 12px; }
-    .container { width: min(1180px, calc(100% - 40px)); margin-inline: auto; }
-    .section { padding: 104px 0; border-bottom: 1px solid var(--line); }
-    .section-alt { background: color-mix(in srgb, var(--paper-2) 42%, transparent); }
-    .eyebrow { display: block; margin-bottom: 12px; color: var(--clay); font: 700 12px/1.4 var(--heading); letter-spacing: .28em; text-transform: uppercase; }
-    .section-title { margin-bottom: 22px; font-size: clamp(30px, 4vw, 44px); line-height: 1.35; letter-spacing: .16em; }
-    .section-lead { max-width: 680px; color: var(--muted); font-size: 16px; }
-    .announcement { padding: 7px 16px; background: #5b738e; color: #f5f3ef; text-align: center; font-size: 12px; letter-spacing: .14em; }
-    .nav { position: sticky; top: 0; z-index: 30; border-bottom: 1px solid var(--line); background: color-mix(in srgb, var(--paper) 90%, transparent); backdrop-filter: blur(14px); }
-    .nav-inner { min-height: 80px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-    .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
-    .brand-mark { width: 48px; height: 48px; flex: 0 0 auto; }
-    .brand-name { display: block; font: 800 19px/1.25 var(--heading); letter-spacing: .14em; }
-    .brand-en { display: block; color: var(--muted); font-size: 10px; letter-spacing: .17em; text-transform: uppercase; }
-    .nav-links { display: flex; align-items: center; gap: 26px; }
-    .nav-links a { color: var(--muted); font-size: 14px; text-decoration: none; }
-    .nav-links a:hover { color: var(--blue); }
-    .nav-actions { display: flex; align-items: center; gap: 10px; }
-    .btn { min-height: 46px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 12px 24px; border: 1px solid var(--blue); border-radius: 2px; background: var(--blue); color: #f5f3ef; font: 700 12px/1.3 var(--heading); letter-spacing: .14em; text-decoration: none; transition: background .2s ease, border-color .2s ease, transform .2s ease; }
-    .btn:hover { background: var(--blue-dark); border-color: var(--blue-dark); transform: translateY(-1px); }
+    .container { width: min(var(--max), calc(100% - var(--pad) * 2)); margin-inline: auto; }
+    .eyebrow { display: block; font: 300 10px/1.6 var(--sans); letter-spacing: .5em; color: var(--faint); text-transform: uppercase; }
+    .section-title { margin-top: 26px; font-size: clamp(34px, 5vw, 72px); line-height: 1.16; letter-spacing: .06em; }
+    .section-lead { max-width: 44em; margin-top: 28px; color: var(--muted); font-size: 14.5px; line-height: 2.1; }
+    .section { padding: clamp(110px, 14vw, 190px) 0 0; }
+
+    /* ── 質感疊層與游標 ───────────────────────────── */
+    .grain {
+      position: fixed; inset: 0; z-index: 90; pointer-events: none; opacity: .05; mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
+    }
+    html.dark .grain { mix-blend-mode: screen; opacity: .035; }
+    #cursorDot { position: fixed; top: 0; left: 0; z-index: 95; width: 26px; height: 26px; border: 1px solid var(--faint); border-radius: 50%; pointer-events: none; transform: translate(-100px, -100px); transition: width .3s ease, height .3s ease, background-color .3s ease; display: none; }
+    body.has-dot #cursorDot { display: block; }
+    body.has-dot, body.has-dot a, body.has-dot button, body.has-dot label { cursor: none; }
+    #cursorDot.near { width: 54px; height: 54px; background: color-mix(in srgb, var(--ink) 88%, transparent); }
+
+    .reveal { opacity: 0; transform: translateY(34px); transition: opacity 1.2s var(--ease), transform 1.2s var(--ease); }
+    .reveal.in { opacity: 1; transform: none; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: none; } }
+    @keyframes slitOpen { from { clip-path: inset(0 46% 0 46%); } to { clip-path: inset(0 0 0 0); } }
+    @keyframes drift { 0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); } 50% { transform: translate3d(0, -14px, 0) rotate(.6deg); } }
+
+    /* ── 公告與導覽 ──────────────────────────────── */
+    .announcement { padding: 10px 20px; background: var(--sumi); color: var(--sumi-ink); text-align: center; font: 300 11px/1.6 var(--sans); letter-spacing: .28em; }
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 70; padding: 32px 0; background: transparent; backdrop-filter: blur(12px); transition: padding .7s var(--ease), background-color .7s ease, border-color .7s ease; border-bottom: 1px solid transparent; }
+    .nav.scrolled { padding: 18px 0; background: color-mix(in srgb, var(--paper) 78%, transparent); border-bottom-color: var(--line); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: flex; align-items: baseline; gap: 14px; }
+    .brand-name { font-size: 20px; font-weight: 200; letter-spacing: .5em; }
+    .brand-en { font: 300 8px/1 var(--sans); letter-spacing: .5em; color: var(--faint); text-transform: uppercase; }
+    .nav-links { display: flex; gap: 34px; }
+    .nav-links a { font: 300 11px/1 var(--sans); letter-spacing: .28em; color: var(--muted); }
+    .underline { position: relative; }
+    .underline::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform .6s var(--ease); }
+    .underline:hover::after { transform: scaleX(1); transform-origin: left; }
+    .nav-actions { display: flex; align-items: center; gap: 12px; }
+    .theme-btn { min-height: 38px; padding: 10px 14px; white-space: nowrap; border: 1px solid var(--line); background: transparent; font: 300 10px/1 var(--sans); letter-spacing: .24em; transition: background-color .5s ease; }
+    .theme-btn:hover { background: color-mix(in srgb, var(--ink) 8%, transparent); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 15px 30px; border: 1px solid var(--ink); background: var(--ink); color: var(--paper); font: 300 11px/1 var(--sans); letter-spacing: .3em; white-space: nowrap; transition: transform .55s var(--ease), background-color .5s ease, color .5s ease, opacity .4s ease; }
+    .btn:hover { transform: translateY(-3px); }
     .btn-outline { background: transparent; color: var(--ink); border-color: var(--line); }
-    .btn-outline:hover { background: var(--surface); color: var(--blue); border-color: var(--blue); }
-    .btn-line { background: #06c755; border-color: #06c755; color: white; }
-    .theme-btn { min-height: 40px; padding: 7px 10px; border: 1px solid var(--line); background: transparent; color: var(--ink); border-radius: 2px; font: 700 11px/1 var(--heading); }
-    .menu-btn { display: none; width: 42px; height: 42px; padding: 10px; border: 1px solid var(--line); background: transparent; color: var(--ink); }
+    .btn-outline:hover { background: color-mix(in srgb, var(--ink) 8%, transparent); border-color: var(--ink); }
+    .btn-sm { min-height: 40px; padding: 13px 26px; font-size: 10.5px; letter-spacing: .32em; }
+    .btn-line { background: transparent; color: var(--sumi-ink); border-color: rgba(233, 228, 218, .4); }
+    .btn-line:hover { background: rgba(233, 228, 218, .1); }
+    .menu-btn { display: none; width: 42px; height: 42px; padding: 10px; border: 1px solid var(--line); background: transparent; }
     .menu-btn svg { width: 100%; height: 100%; }
-    .mobile-menu { display: none; padding: 0 20px 20px; }
-    .mobile-menu.open { display: grid; gap: 4px; }
-    .mobile-menu a { padding: 12px 0; border-bottom: 1px solid var(--line); color: var(--muted); text-decoration: none; }
-    .hero { min-height: calc(100vh - 110px); display: flex; align-items: center; padding: 80px 0; border-bottom: 1px solid var(--line); }
-    .hero-grid { display: grid; grid-template-columns: 1.25fr .75fr; gap: clamp(46px, 7vw, 90px); align-items: center; }
-    .hero-label { display: inline-flex; align-items: center; gap: 9px; margin-bottom: 28px; padding: 7px 11px; border: 1px solid var(--line); color: var(--blue); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; }
-    .hero-label::before { content: ""; width: 6px; height: 6px; background: var(--blue); }
-    .hero h1 { margin-bottom: 28px; font-size: clamp(42px, 6vw, 72px); line-height: 1.2; letter-spacing: .14em; }
-    .hero h1 span { color: var(--blue); }
-    .hero-copy { max-width: 650px; margin-bottom: 34px; color: var(--muted); font-size: clamp(16px, 2vw, 19px); line-height: 2; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
-    .hero-proof { display: grid; grid-template-columns: repeat(3, 1fr); max-width: 560px; margin-top: 52px; padding-top: 26px; border-top: 1px solid var(--line); gap: 20px; }
-    .hero-proof strong { display: block; font: 800 21px/1.2 var(--heading); }
-    .hero-proof span { color: var(--muted); font-size: 12px; }
-    .hero-media { position: relative; padding: 12px; border: 1px solid var(--line); background: var(--surface); }
-    .hero-media img { width: 100%; height: min(65vh, 610px); min-height: 480px; object-fit: cover; }
-    .hero-caption { position: absolute; inset: auto 12px 12px; padding: 15px 17px; background: color-mix(in srgb, var(--paper) 94%, transparent); border-top: 1px solid var(--line); }
-    .hero-caption small { display: block; color: var(--clay); font: 700 10px/1.4 var(--heading); letter-spacing: .17em; }
-    .hero-caption strong { font: 700 13px/1.5 var(--heading); letter-spacing: .1em; }
-    .philosophy { max-width: 860px; margin: 0 auto 48px; text-align: center; }
-    .philosophy blockquote { margin: 0; color: var(--ink); font-size: clamp(17px, 2.4vw, 22px); line-height: 2; }
-    .values { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--line); background: color-mix(in srgb, var(--paper) 86%, transparent); }
-    .value { padding: 34px; }
-    .value + .value { border-left: 1px solid var(--line); }
-    .value b { display: block; margin-bottom: 10px; color: var(--clay); font: 700 12px/1 var(--heading); }
-    .value h3 { font-size: 19px; letter-spacing: .12em; }
-    .value p { margin: 0; color: var(--muted); font-size: 14px; }
-    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 48px; }
-    .section-head .section-lead { max-width: 480px; }
-    .services { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-    .service { display: flex; flex-direction: column; padding: 18px; border: 1px solid var(--line); background: color-mix(in srgb, var(--paper) 92%, transparent); }
-    .service img { width: 100%; height: 220px; margin-bottom: 22px; object-fit: cover; }
-    .service h3 { margin-bottom: 10px; font-size: 18px; letter-spacing: .11em; }
-    .service p { flex: 1; color: var(--muted); font-size: 13px; }
-    .service .btn { width: 100%; margin-top: 12px; }
-    .portfolio-note { margin: -28px auto 36px; max-width: 760px; color: var(--muted); text-align: center; font-size: 13px; }
-    .filters { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 36px; }
-    .filter { padding: 9px 16px; border: 1px solid var(--line); background: var(--paper); color: var(--muted); font: 700 12px/1.4 var(--heading); }
-    .filter.active { background: var(--blue); border-color: var(--blue); color: #f5f3ef; }
-    .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .work { overflow: hidden; border: 1px solid var(--line); background: var(--paper); }
-    .work img { width: 100%; height: 360px; object-fit: cover; }
-    .work-copy { padding: 18px 20px; }
-    .work-copy small { display: block; margin-bottom: 4px; color: var(--clay); font: 700 10px/1.4 var(--heading); letter-spacing: .12em; }
-    .work-copy h3 { margin: 0; font-size: 15px; letter-spacing: .08em; }
-    .process { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-    .step { padding: 34px 26px; }
-    .step + .step { border-left: 1px solid var(--line); }
-    .step span { display: block; margin-bottom: 18px; color: var(--clay); font: 800 26px/1 var(--heading); }
-    .step h3 { font-size: 17px; letter-spacing: .1em; }
-    .step p { margin-bottom: 0; color: var(--muted); font-size: 13px; }
-    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 34px; align-items: start; }
-    .info-panel { padding: 34px; border: 1px solid var(--line); background: var(--surface); }
-    .info-list { margin: 0; padding: 0; list-style: none; }
-    .info-list li { padding: 14px 0; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 14px; }
-    .info-list li:last-child { border-bottom: 0; }
+    .mobile-menu { display: none; padding: 8px var(--pad) 20px; }
+    .mobile-menu.open { display: grid; gap: 2px; }
+    .mobile-menu a { padding: 14px 0; border-bottom: 1px solid var(--line); color: var(--muted); font: 300 12px/1 var(--sans); letter-spacing: .24em; }
+    .mobile-menu .btn { margin-top: 16px; }
+
+    /* ── Hero ───────────────────────────────────── */
+    .hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; overflow: hidden; padding: 150px 0 0; }
+    .hero-ghost { position: absolute; right: -6vw; top: 4vh; z-index: 0; font-size: min(62vh, 52vw); line-height: .8; font-weight: 200; opacity: .045; pointer-events: none; user-select: none; animation: drift 18s ease-in-out infinite; }
+    .hero-inner { position: relative; z-index: 1; }
+    .hero-head { display: flex; align-items: flex-start; gap: clamp(20px, 4vw, 64px); animation: fadeUp 1.3s .1s both; }
+    .vertical { writing-mode: vertical-rl; text-orientation: upright; }
+    .hero-tag { padding-top: 8px; font: 300 10px/1 var(--sans); letter-spacing: .55em; color: var(--faint); }
+    .hero h1 { font-size: clamp(48px, 11.5vw, 210px); line-height: .92; letter-spacing: .02em; }
+    .hero h1 + h1 { margin-top: .06em; margin-left: clamp(0px, 16vw, 300px); }
+    .hero-en { display: inline-block; font-family: var(--display); font-style: italic; font-weight: 300; font-size: .16em; letter-spacing: 0; color: var(--faint); margin-left: .4em; white-space: nowrap; vertical-align: baseline; }
+    .hero-foot { display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: end; margin-top: clamp(48px, 7vw, 96px); animation: fadeUp 1.3s .5s both; }
+    .hero-copy { max-width: 30em; color: var(--muted); font-size: 15px; line-height: 2.3; }
+    .hero-actions { display: flex; gap: 28px; align-items: center; font: 300 11px/1 var(--sans); letter-spacing: .3em; white-space: nowrap; }
+    .hero-actions button { border: 0; background: transparent; padding: 0; font: inherit; letter-spacing: inherit; }
+    .hero-scroll { position: absolute; left: var(--pad); bottom: 34px; font: 300 9.5px/1 var(--sans); letter-spacing: .4em; color: var(--faint); }
+    .hero-proof { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: clamp(46px, 6vw, 76px); border-top: 1px solid var(--line); }
+    .hero-proof div { padding: 28px 30px 0 0; }
+    .hero-proof div + div { padding-left: 30px; border-left: 1px solid var(--line); }
+    .hero-proof strong { display: block; font: 300 clamp(26px, 2.6vw, 34px)/1 var(--display); }
+    .hero-proof span { display: block; margin-top: 10px; font: 300 11px/1 var(--sans); letter-spacing: .24em; color: var(--faint); }
+
+    .slit { position: relative; height: 88vh; overflow: hidden; background: var(--img-bg); animation: slitOpen 1.8s .7s var(--ease) both; }
+    .slit img { width: 100%; height: 118%; object-fit: cover; }
+    .slit-caption { position: absolute; inset: auto 0 0 0; display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; padding: 36px var(--pad); background: linear-gradient(to top, rgba(0, 0, 0, .45), transparent); color: #fff; font: 300 10px/1.6 var(--sans); letter-spacing: .4em; }
+
+    /* ── 品牌理念 ────────────────────────────────── */
+    .philosophy-grid { display: grid; grid-template-columns: auto 1fr; gap: clamp(28px, 6vw, 90px); align-items: start; }
+    .philosophy-vertical { position: sticky; top: 170px; font-size: clamp(26px, 3vw, 44px); font-weight: 200; letter-spacing: .28em; }
+    .philosophy-quote { margin-top: 44px; max-width: 20em; font-family: var(--display); font-style: italic; font-weight: 300; font-size: clamp(22px, 2.6vw, 38px); line-height: 1.75; color: color-mix(in srgb, var(--ink) 80%, transparent); }
+    .values { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 90px; border-top: 1px solid var(--line); }
+    .value { padding: 40px 34px 46px 0; }
+    .value + .value { padding-left: 34px; border-left: 1px solid var(--line); }
+    .value b { display: block; font: 300 12px/1 var(--display); letter-spacing: .36em; color: var(--faint); }
+    .value h3 { margin: 22px 0 16px; font-size: 21px; font-weight: 300; letter-spacing: .16em; }
+    .value p { color: var(--muted); font-size: 14px; line-height: 2.1; }
+
+    /* ── 核心服務（障子屏風） ────────────────────── */
+    .sumi { margin-top: clamp(90px, 12vw, 160px); padding: clamp(100px, 12vw, 170px) 0 clamp(80px, 10vw, 140px); background: var(--sumi); color: var(--sumi-ink); }
+    .sumi .eyebrow, .sumi .section-lead, .sumi .muted { color: rgba(233, 228, 218, .55); }
+    .sumi-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 36px; flex-wrap: wrap; }
+    .sumi-head .section-lead { max-width: 26em; margin-top: 0; }
+    .panels { display: flex; height: clamp(420px, 62vh, 620px); margin-top: clamp(60px, 8vw, 100px); gap: 1px; background: var(--sumi-line); }
+    .panel { position: relative; flex: 1; overflow: hidden; background: #221f1a; transition: flex 1s var(--ease); }
+    .panel:first-child { flex: 2.9; }
+    .panels:hover .panel, .panels:focus-within .panel { flex: 1; }
+    .panels .panel:hover, .panels .panel:focus-within { flex: 2.9; }
+    .panel > .image-slot { position: absolute; inset: 0; }
+    .panel img { width: 100%; height: 100%; object-fit: cover; opacity: .55; transform: scale(1.12); transition: opacity 1s ease, transform 1.6s var(--ease); }
+    .panel:first-child img { opacity: 1; transform: scale(1.02); }
+    .panels:hover .panel img, .panels:focus-within .panel img { opacity: .55; transform: scale(1.12); }
+    .panels .panel:hover img, .panels .panel:focus-within img { opacity: 1; transform: scale(1.02); }
+    .panel-scrim { position: absolute; inset: 0; background: linear-gradient(to top, rgba(12, 11, 9, .78), rgba(12, 11, 9, .18)); }
+    .panel-body { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: space-between; padding: 34px 30px; }
+    .panel-no { font: 300 12px/1 var(--display); letter-spacing: .34em; opacity: .6; }
+    .panel-vertical { font-size: clamp(20px, 2vw, 29px); font-weight: 200; letter-spacing: .28em; opacity: 1; transition: opacity .6s ease; }
+    .panel:first-child .panel-vertical { opacity: 0; }
+    .panels:hover .panel .panel-vertical, .panels:focus-within .panel .panel-vertical { opacity: 1; }
+    .panels .panel:hover .panel-vertical, .panels .panel:focus-within .panel-vertical { opacity: 0; }
+    .panel-copy { position: absolute; inset: auto 30px 34px 30px; opacity: 0; transition: opacity .7s ease .12s; }
+    .panel:first-child .panel-copy { opacity: 1; }
+    .panels:hover .panel .panel-copy, .panels:focus-within .panel .panel-copy { opacity: 0; }
+    .panels .panel:hover .panel-copy, .panels .panel:focus-within .panel-copy { opacity: 1; }
+    .panel-copy h3 { font-size: clamp(22px, 2.2vw, 32px); font-weight: 300; letter-spacing: .14em; }
+    .panel-copy p { margin-top: 16px; max-width: 24em; font-size: 14px; line-height: 2.05; color: rgba(233, 228, 218, .72); }
+    .panel-copy .panel-cta { margin-top: 20px; padding: 0; border: 0; background: transparent; font: 300 10.5px/1 var(--sans); letter-spacing: .3em; color: var(--sumi-ink); }
+    .panel-vertical-wrap { position: absolute; inset: auto 30px 34px 30px; display: flex; justify-content: flex-start; }
+
+    /* ── 風格作品 ────────────────────────────────── */
+    .filters { display: flex; gap: 8px; margin-top: 46px; flex-wrap: wrap; }
+    .filter { padding: 11px 24px; border: 1px solid var(--line); background: transparent; font: 300 11.5px/1 var(--sans); letter-spacing: .22em; transition: background-color .45s ease, color .45s ease, border-color .45s ease; }
+    .filter.active { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+    .portfolio-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 22px; margin-top: 56px; }
+    .work { position: relative; overflow: hidden; background: var(--img-bg); transition: opacity .7s ease; }
+    .work.dim { opacity: .16; }
+    .work .image-slot, .work img { height: 100%; }
+    .work img { width: 100%; object-fit: cover; transition: transform 1.4s var(--ease); }
+    .work:hover img { transform: scale(1.06); }
+    .work-copy { position: absolute; inset: auto 0 0 0; display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; padding: 22px; background: linear-gradient(to top, rgba(0, 0, 0, .48), transparent); color: #fff; }
+    .work-copy small { font: 300 9.5px/1.4 var(--sans); letter-spacing: .3em; opacity: .8; }
+    .work-copy h3 { font-size: 15px; font-weight: 300; letter-spacing: .14em; }
+    .work:nth-child(1) { grid-column: span 7; height: clamp(340px, 40vw, 560px); }
+    .work:nth-child(2) { grid-column: span 5; height: clamp(340px, 40vw, 560px); }
+    .work:nth-child(3), .work:nth-child(4), .work:nth-child(5) { grid-column: span 4; height: clamp(300px, 30vw, 430px); }
+    .work:nth-child(6), .work:nth-child(7) { grid-column: span 6; height: clamp(320px, 34vw, 480px); }
+
+    /* ── 流程 ───────────────────────────────────── */
+    .process { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 80px; background: var(--line); }
+    .step { padding: 46px 34px 60px; background: var(--paper); }
+    .step span { display: block; font: 300 56px/1 var(--display); opacity: .22; }
+    .step h3 { margin: 24px 0 14px; font-size: 20px; font-weight: 300; letter-spacing: .12em; }
+    .step p { color: var(--muted); font-size: 14px; line-height: 2.05; }
+
+    /* ── 服務須知與 FAQ ─────────────────────────── */
+    .faq-grid { display: grid; grid-template-columns: .75fr 1.25fr; gap: clamp(34px, 6vw, 100px); align-items: start; }
+    .faq-side { position: sticky; top: 150px; }
+    .faq-side .section-lead { font-size: 13.5px; }
+    .info-list { margin: 34px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+    .info-list li { padding: 18px 0; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 13.5px; line-height: 2.05; }
+    .info-list strong { font-weight: 400; color: var(--ink); }
+    .faq-list { border-top: 1px solid var(--line); }
     details { border-bottom: 1px solid var(--line); }
-    summary { padding: 18px 0; cursor: pointer; color: var(--ink); font: 700 15px/1.6 var(--heading); letter-spacing: .07em; }
-    details p { padding: 0 0 18px; color: var(--muted); font-size: 14px; }
+    summary { display: flex; justify-content: space-between; align-items: center; gap: 22px; padding: 30px 2px; cursor: pointer; font-size: clamp(16px, 1.6vw, 21px); font-weight: 300; letter-spacing: .08em; list-style: none; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "＋"; flex: 0 0 auto; font: 300 12px/1 var(--sans); color: var(--faint); transition: transform .55s var(--ease); }
+    details[open] summary::after { transform: rotate(135deg); }
+    details p { padding: 0 56px 32px 2px; color: var(--muted); font-size: 14px; line-height: 2.2; }
+
+    /* ── Contact / Footer ───────────────────────── */
     .contact { text-align: center; }
-    .contact .section-lead { margin-inline: auto; }
-    .contact-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 30px; }
-    footer { padding: 64px 0 48px; border-top: 1px solid rgba(245,243,239,.1); background: #2b3540; color: #f5f3ef; }
-    .footer-original-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 32px; border-top: 1px solid rgba(245,243,239,.1); color: rgba(245,243,239,.5); font-size: 12px; font-weight: 300; }
-    .footer-original-row p { margin: 0; }
+    .contact .section-title { font-size: clamp(40px, 9vw, 140px); line-height: 1.05; letter-spacing: .03em; margin-top: 40px; }
+    .contact .section-lead { margin-inline: auto; max-width: 30em; color: rgba(233, 228, 218, .55); }
+    .contact-actions { display: flex; justify-content: center; gap: 18px; margin-top: 52px; flex-wrap: wrap; }
+    .contact .btn { background: var(--sumi-ink); color: var(--sumi); border-color: var(--sumi-ink); }
+    footer { padding: 26px 0 46px; background: var(--sumi); color: var(--sumi-ink); }
+    .footer-original-row { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 26px; border-top: 1px solid var(--sumi-line); font: 300 10px/2 var(--sans); letter-spacing: .24em; color: rgba(233, 228, 218, .45); }
     .footer-credit { text-align: right; }
-    .footer-admin-link { display: inline-block; margin-left: .35em; color: rgba(245,243,239,.72); font-weight: 500; text-underline-offset: 4px; transition: color .2s ease; }
-    .footer-admin-link:hover { color: var(--clay); }
-    .modal { position: fixed; inset: 0; z-index: 60; display: flex; align-items: center; justify-content: center; padding: 18px; background: rgba(24,31,38,.78); backdrop-filter: blur(6px); }
+    .footer-admin-link { border-bottom: 1px solid transparent; color: rgba(233, 228, 218, .8); transition: border-color .4s ease; }
+    .footer-admin-link:hover { border-bottom-color: currentColor; }
+
+    /* ── 彈窗 ───────────────────────────────────── */
+    .modal { position: fixed; inset: 0; z-index: 100; display: flex; align-items: flex-start; justify-content: center; padding: 24px; overflow-y: auto; background: rgba(12, 11, 9, .66); backdrop-filter: blur(6px); }
     .modal.hidden { display: none; }
-    .modal-panel { width: min(720px, 100%); max-height: 92vh; overflow-y: auto; border: 1px solid var(--line); background: var(--paper); box-shadow: var(--shadow); }
-    .modal-head { position: sticky; top: 0; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 22px 26px; border-bottom: 1px solid var(--line); background: var(--paper); }
-    .modal-head h2 { margin: 0; font-size: 23px; letter-spacing: .12em; }
-    .close-btn { width: 40px; height: 40px; flex: 0 0 auto; border: 1px solid var(--line); background: transparent; color: var(--ink); font-size: 22px; line-height: 1; }
-    .booking-form { display: grid; gap: 22px; padding: 26px; }
+    .modal-panel { width: min(680px, 100%); margin: 40px 0; background: var(--paper); color: var(--ink); box-shadow: var(--shadow); animation: fadeUp .5s both; }
+    .modal-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; padding: clamp(32px, 4vw, 48px) clamp(28px, 4vw, 48px) 0; }
+    .modal-head h2 { margin-top: 18px; font-size: clamp(26px, 3.2vw, 38px); letter-spacing: .12em; }
+    .close-btn { width: 40px; height: 40px; flex: 0 0 auto; border: 0; background: transparent; font-size: 22px; line-height: 1; opacity: .5; }
+    .close-btn:hover { opacity: 1; }
+    .booking-form, .admin-login-form { display: grid; gap: 24px; padding: clamp(24px, 3vw, 34px) clamp(28px, 4vw, 48px) clamp(32px, 4vw, 48px); }
     fieldset { min-width: 0; margin: 0; padding: 0; border: 0; }
-    legend, label { display: block; margin-bottom: 7px; color: var(--ink); font: 700 13px/1.6 var(--heading); letter-spacing: .05em; }
-    .required { color: var(--clay); }
-    .service-options { display: grid; grid-template-columns: repeat(2, 1fr); gap: 9px; }
+    legend, label { display: block; font: 300 10px/1.6 var(--sans); letter-spacing: .3em; color: var(--muted); text-transform: uppercase; }
+    .required { color: var(--accent); }
+    .service-options { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 16px; }
     .service-choice { position: relative; margin: 0; }
     .service-choice input { position: absolute; opacity: 0; }
-    .service-choice span { display: block; padding: 11px 12px; border: 1px solid var(--line); color: var(--muted); text-align: center; font: 700 12px/1.5 var(--heading); }
-    .service-choice input:checked + span { border-color: var(--clay); background: color-mix(in srgb, var(--clay) 10%, transparent); color: var(--clay); }
-    .service-choice input:focus-visible + span { outline: 3px solid var(--clay); outline-offset: 2px; }
-    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    input, select, textarea { width: 100%; padding: 12px 13px; border: 1px solid var(--line); border-radius: 0; background: color-mix(in srgb, var(--paper) 90%, white 10%); color: var(--ink); font-size: 14px; }
-    textarea { resize: vertical; }
-    .consent { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: start; margin: 0; color: var(--muted); font: 400 12px/1.7 var(--body); }
-    .consent input { width: 18px; height: 18px; margin-top: 3px; }
-    .form-note { margin: 0; color: var(--muted); font-size: 12px; }
-    .form-status { min-height: 24px; margin: 0; color: #a33e3e; font-size: 13px; }
+    .service-choice span { display: block; padding: 14px 16px; border: 1px solid var(--line); text-align: center; font-family: var(--serif); font-size: 14px; letter-spacing: .06em; text-transform: none; transition: background-color .4s ease, border-color .4s ease; }
+    .service-choice input:checked + span { border-color: var(--ink); background: color-mix(in srgb, var(--ink) 8%, transparent); }
+    .service-choice input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    input, select, textarea { width: 100%; margin-top: 10px; padding: 13px 2px; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; background: transparent; font-family: var(--serif); font-size: 15px; letter-spacing: .04em; }
+    input:focus, select:focus, textarea:focus { outline: 0; border-bottom-color: var(--ink); }
+    textarea { resize: vertical; line-height: 2; }
+    .consent { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: start; font-family: var(--serif); font-size: 13px; line-height: 1.9; letter-spacing: .02em; text-transform: none; color: var(--muted); }
+    .consent input { width: 18px; height: 18px; margin-top: 4px; accent-color: var(--ink); }
+    .form-note { color: var(--muted); font-size: 13px; line-height: 2; }
+    .form-status { min-height: 22px; color: #a33e3e; font-size: 13px; }
     .honeypot { position: absolute !important; left: -10000px !important; width: 1px !important; height: 1px !important; overflow: hidden !important; }
-    .success { padding: 42px 28px; text-align: center; }
-    .success.hidden { display: none; }
-    .success-mark { width: 58px; height: 58px; display: grid; place-items: center; margin: 0 auto 20px; border: 1px solid #2c8d66; border-radius: 50%; color: #2c8d66; font: 800 25px/1 var(--heading); }
-    .success h3 { font-size: 26px; letter-spacing: .12em; }
-    .success p { color: var(--muted); }
-    .ref-code { display: inline-block; margin: 12px 0 24px; padding: 10px 14px; background: var(--surface); color: var(--clay); font: 700 13px/1.4 monospace; }
-    .success-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
-    .admin-entry { position: fixed; right: 22px; bottom: 22px; z-index: 45; width: 54px; height: 54px; display: grid; place-items: center; padding: 0; border: 1px solid rgba(245,243,239,.45); border-radius: 50%; background: var(--blue-dark); color: #f5f3ef; box-shadow: 0 12px 32px rgba(43,53,64,.3); }
-    .admin-entry:hover { transform: translateY(-2px); background: var(--blue); }
-    .admin-entry svg { width: 22px; height: 22px; }
-    .admin-toolbar { position: fixed; left: 50%; bottom: 18px; z-index: 46; width: min(620px, calc(100% - 104px)); display: flex; align-items: center; gap: 10px; padding: 10px; border: 1px solid var(--line); background: color-mix(in srgb, var(--paper) 96%, transparent); box-shadow: var(--shadow); backdrop-filter: blur(14px); }
-    .admin-toolbar.hidden { display: none; }
-    .admin-toolbar .btn { min-height: 40px; padding: 9px 16px; }
-    .admin-status { flex: 1; margin: 0; color: var(--muted); font-size: 12px; }
-    .admin-editing [data-edit-key] { outline: 1px dashed color-mix(in srgb, var(--clay) 70%, transparent); outline-offset: 4px; cursor: text; }
-    .admin-editing [data-edit-key]:focus { outline: 2px solid var(--clay); background: color-mix(in srgb, var(--clay) 8%, transparent); }
-    .image-slot { position: relative; }
-    .image-edit-button { position: absolute; z-index: 4; top: 12px; right: 12px; display: none; min-height: 38px; padding: 8px 12px; border: 1px solid rgba(255,255,255,.55); background: rgba(43,53,64,.9); color: white; font: 700 11px/1.2 var(--heading); letter-spacing: .08em; }
-    .admin-editing .image-edit-button { display: inline-flex; align-items: center; gap: 6px; }
-    .service .image-slot { margin-bottom: 22px; }
-    .service .image-slot img { margin-bottom: 0; }
-    .work .image-slot img { width: 100%; }
+    .success { padding: 56px 44px 44px; text-align: center; width: min(460px, 100%); }
+    .success-mark { font-size: 34px; font-weight: 200; opacity: .5; }
+    .success h3 { margin-top: 24px; font-size: 26px; font-weight: 300; letter-spacing: .14em; }
+    .success p { margin-top: 22px; color: var(--muted); font-size: 13.5px; line-height: 2.1; }
+    .ref-code { margin-top: 26px; font: 300 11px/1 var(--sans); letter-spacing: .3em; }
+    .success-actions { margin-top: 34px; }
+    .success-actions .btn { width: 100%; }
     .admin-login-panel { width: min(440px, 100%); }
-    .admin-login-form { display: grid; gap: 18px; padding: 26px; }
     .admin-login-form .btn { width: 100%; }
-    .admin-help { margin: 0; color: var(--muted); font-size: 12px; }
+    .admin-help { color: var(--muted); font-size: 13px; line-height: 2; }
+
+    /* ── 管理模式 ────────────────────────────────── */
+    .admin-entry { position: fixed; right: 20px; bottom: 20px; z-index: 45; width: 42px; height: 42px; display: grid; place-items: center; padding: 0; border: 1px solid var(--line); background: color-mix(in srgb, var(--paper) 85%, transparent); color: var(--faint); backdrop-filter: blur(8px); transition: color .4s ease, border-color .4s ease; }
+    .admin-entry:hover { color: var(--ink); border-color: var(--ink); }
+    .admin-entry svg { width: 17px; height: 17px; }
+    .admin-toolbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 99; display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; padding: 16px 28px; background: var(--sumi); color: var(--sumi-ink); font: 300 10.5px/1.8 var(--sans); letter-spacing: .24em; }
+    .admin-toolbar.hidden { display: none; }
+    .admin-toolbar .btn { min-height: 38px; padding: 11px 22px; background: var(--sumi-ink); color: var(--sumi); border-color: var(--sumi-ink); }
+    .admin-toolbar .btn-outline { background: transparent; color: var(--sumi-ink); border-color: rgba(233, 228, 218, .4); }
+    .admin-status { flex: 1; min-width: 200px; margin: 0; opacity: .7; }
+    .admin-editing [data-edit-key] { outline: 1px dashed color-mix(in srgb, var(--accent) 70%, transparent); outline-offset: 4px; cursor: text; }
+    .admin-editing .sumi [data-edit-key], .admin-editing footer [data-edit-key] { outline-color: rgba(233, 228, 218, .5); }
+    .admin-editing [data-edit-key]:focus { outline: 2px solid var(--accent); }
+    .image-slot { position: relative; }
+    .image-edit-button { position: absolute; z-index: 4; top: 12px; right: 12px; display: none; min-height: 36px; padding: 9px 14px; border: 1px solid rgba(255, 255, 255, .55); background: rgba(20, 18, 15, .88); color: #fff; font: 300 10px/1 var(--sans); letter-spacing: .2em; }
+    .admin-editing .image-edit-button { display: inline-flex; align-items: center; }
+    .admin-editing .panels { flex-direction: column; height: auto; }
+    .admin-editing .panel, .admin-editing .panels .panel:hover { flex: none; height: 360px; }
+    .admin-editing .panel img, .admin-editing .panels .panel img { opacity: 1; transform: none; }
+    .admin-editing .panel-copy, .admin-editing .panels .panel .panel-copy { opacity: 1; }
+    .admin-editing .panel-vertical-wrap { display: none; }
+    .admin-editing .work.dim { opacity: 1; }
     #adminImageInput { position: fixed; left: -10000px; width: 1px; height: 1px; opacity: 0; }
-    @media (max-width: 980px) {
+
+    /* ── 響應式 ─────────────────────────────────── */
+    @media (max-width: 1100px) {
+      .work:nth-child(n) { grid-column: span 6; height: clamp(300px, 42vw, 460px); }
+    }
+    @media (max-width: 960px) {
+      :root { --pad: 22px; }
+      html { scroll-padding-top: 90px; }
       .nav-links, .nav-actions .btn { display: none; }
       .menu-btn { display: block; }
-      .hero-grid { grid-template-columns: 1fr 1fr; gap: 34px; }
-      .services { grid-template-columns: repeat(2, 1fr); }
-      .process { grid-template-columns: repeat(2, 1fr); }
-      .step:nth-child(3) { border-left: 0; border-top: 1px solid var(--line); }
-      .step:nth-child(4) { border-top: 1px solid var(--line); }
-    }
-    @media (max-width: 720px) {
-      .container { width: min(100% - 32px, 1180px); }
-      .section { padding: 76px 0; }
-      .announcement { font-size: 10px; }
-      .nav-inner { min-height: 70px; }
-      .brand-mark { width: 42px; height: 42px; }
-      .brand-name { font-size: 17px; }
-      .hero { padding: 62px 0 72px; }
-      .hero-grid { grid-template-columns: 1fr; }
-      .hero h1 { font-size: clamp(38px, 12vw, 54px); }
-      .hero-proof { gap: 12px; }
-      .hero-proof strong { font-size: 17px; }
-      .hero-media img { min-height: 420px; height: 68vh; }
-      .values, .services, .portfolio-grid, .info-grid { grid-template-columns: 1fr; }
-      .value + .value { border-left: 0; border-top: 1px solid var(--line); }
-      .section-head { display: block; }
-      .section-head .section-lead { margin-top: 20px; }
-      .portfolio-grid { gap: 18px; }
-      .service img, .work img { height: 300px; }
-      .process { grid-template-columns: 1fr; }
-      .step + .step, .step:nth-child(3) { border-left: 0; border-top: 1px solid var(--line); }
+      .hero { padding-top: 130px; }
+      .hero-foot { grid-template-columns: 1fr; }
+      .hero h1 + h1 { margin-left: 0; }
+      .hero-scroll, .hero-tag, .philosophy-vertical, .hero-en { display: none; }
+      .philosophy-grid, .faq-grid { grid-template-columns: 1fr; }
+      .faq-side { position: static; }
+      .values, .process { grid-template-columns: 1fr; }
+      .value, .value + .value { padding: 34px 0; border-left: 0; border-bottom: 1px solid var(--line); }
+      .panels { flex-direction: column; height: auto; }
+      .panel, .panels .panel:hover, .panels:hover .panel { flex: none; height: 360px; }
+      .panel img, .panels:hover .panel img { opacity: .5; transform: none; }
+      .panel-copy, .panels:hover .panel .panel-copy { opacity: 1; }
+      .panel-vertical-wrap { display: none; }
+      .work:nth-child(n) { grid-column: span 12; height: clamp(280px, 62vw, 420px); }
+      .slit { height: 62vh; }
       .footer-original-row { flex-direction: column; text-align: center; }
       .footer-credit { text-align: center; }
       .field-row, .service-options { grid-template-columns: 1fr; }
-      .modal { padding: 0; align-items: stretch; }
-      .modal-panel { max-height: 100vh; width: 100%; }
-      .success-actions .btn { width: 100%; }
-      .admin-entry { right: 14px; bottom: 14px; width: 50px; height: 50px; }
-      .admin-toolbar { left: 12px; right: 76px; bottom: 12px; width: auto; flex-wrap: wrap; transform: none; }
-      .admin-status { flex-basis: 100%; order: -1; }
+      .modal { padding: 0; }
+      .modal-panel { margin: 0; min-height: 100vh; }
+      .admin-toolbar { padding: 14px 18px; }
+    }
+    @media (max-width: 600px) {
+      .hero-proof { grid-template-columns: 1fr; }
+      .hero-proof div, .hero-proof div + div { padding: 20px 0; border-left: 0; border-bottom: 1px solid var(--line); }
+    }
+    @media (pointer: coarse) {
+      body.has-dot, body.has-dot a, body.has-dot button, body.has-dot label { cursor: auto; }
+      body.has-dot #cursorDot { display: none; }
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+      .reveal { opacity: 1; transform: none; }
+      .grain { display: none; }
     }
   </style>
 </head>
@@ -279,102 +372,161 @@
   <a class="skip-link" href="#main">跳到主要內容</a>
   <div class="announcement" data-edit-key="announcement">季節空間花藝、婚禮花藝與客製花禮開放預約諮詢</div>
 
-  <nav class="nav" aria-label="主要導覽">
+  <nav class="nav" id="siteNav" aria-label="主要導覽">
     <div class="container nav-inner">
       <a class="brand" href="#top" aria-label="默藍花藝首頁">
-        <svg class="brand-mark" viewBox="0 0 200 200" fill="none" aria-hidden="true">
-          <circle cx="100" cy="100" r="95" stroke="currentColor" stroke-width="1.5"/>
-          <circle cx="100" cy="100" r="89" stroke="currentColor" stroke-width=".8"/>
-          <text x="56" y="106" font-family="sans-serif" font-weight="800" font-size="38" fill="currentColor" text-anchor="middle">默</text>
-          <text x="144" y="106" font-family="sans-serif" font-weight="800" font-size="38" fill="currentColor" text-anchor="middle">藍</text>
-          <path d="M100 111Q98 90 95 72Q100 60 108 50M95 72Q105 66 112 70" stroke="#b38a7d" stroke-width="1.5" stroke-linecap="round"/>
-          <path d="M108 50Q102 42 98 48Q92 44 94 38Q102 34 108 42Q114 36 116 42Q118 48 108 50Z" fill="#b38a7d" fill-opacity=".3" stroke="#b38a7d"/>
-          <text x="100" y="132" font-family="serif" font-size="10" fill="currentColor" text-anchor="middle" letter-spacing="1.6">MORAN FLORAL STUDIO</text>
-          <line x1="50" y1="140" x2="150" y2="140" stroke="#b38a7d" stroke-width=".8"/>
-          <text x="100" y="158" font-family="serif" font-size="10" fill="currentColor" text-anchor="middle" letter-spacing="3">花藝・設計</text>
-        </svg>
-        <span><span class="brand-name">默藍花藝</span><span class="brand-en">Moran Floral Studio</span></span>
+        <span class="brand-name">默藍</span><span class="brand-en">Moran Floral Studio</span>
       </a>
       <div class="nav-links">
-        <a href="#philosophy">品牌理念</a><a href="#services">核心服務</a><a href="#portfolio">風格作品</a><a href="#process">預約流程</a><a href="#faq">常見問題</a>
+        <a class="underline" href="#philosophy">01 理念</a><a class="underline" href="#services">02 服務</a><a class="underline" href="#portfolio">03 作品</a><a class="underline" href="#process">04 流程</a><a class="underline" href="#faq">05 問答</a>
       </div>
       <div class="nav-actions">
         <button class="theme-btn" type="button" data-theme-toggle aria-label="切換深色或淺色模式">深色模式</button>
-        <button class="btn" type="button" data-open-booking>預約專屬諮詢</button>
+        <button class="btn btn-outline btn-sm" type="button" data-open-booking>預約</button>
         <button class="menu-btn" type="button" aria-controls="mobileMenu" aria-expanded="false" aria-label="開啟導覽選單">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
         </button>
       </div>
     </div>
-    <div id="mobileMenu" class="mobile-menu container">
-      <a href="#philosophy">品牌理念</a><a href="#services">核心服務</a><a href="#portfolio">風格作品</a><a href="#process">預約流程</a><a href="#faq">常見問題</a>
-      <button class="btn" type="button" data-open-booking>預約專屬諮詢</button>
+    <div id="mobileMenu" class="mobile-menu">
+      <a href="#philosophy">01 理念</a><a href="#services">02 服務</a><a href="#portfolio">03 作品</a><a href="#process">04 流程</a><a href="#faq">05 問答</a>
+      <button class="btn" type="button" data-open-booking>預約花藝諮詢</button>
     </div>
   </nav>
 
   <main id="main">
     <section id="top" class="hero">
-      <div class="container hero-grid">
-        <div>
-          <div class="hero-label">Moran Floral Studio · Wabi-Sabi Aesthetics</div>
-          <h1><span data-edit-key="heroLine1">把花開的瞬間</span><br><span data-edit-key="heroLine2">留在日常裡</span></h1>
+      <div class="hero-ghost" id="heroGhost" aria-hidden="true">默</div>
+      <div class="container hero-inner">
+        <div class="hero-head">
+          <div class="vertical hero-tag" aria-hidden="true">WABI · SABI</div>
+          <div>
+            <h1><span data-edit-key="heroLine1">把花開的瞬間</span><span class="hero-en">the moment it blooms</span></h1>
+            <h1><span data-edit-key="heroLine2">留在日常裡</span></h1>
+          </div>
+        </div>
+        <div class="hero-foot">
           <p class="hero-copy" data-edit-key="heroCopy">順應花材與枝葉的自然姿態，為婚禮、商業場域、贈禮與日常空間，整理出安靜且有層次的花藝風景。</p>
           <div class="hero-actions">
-            <button class="btn" type="button" data-open-booking>預約花藝諮詢</button>
-            <a class="btn btn-outline" href="#portfolio">瀏覽風格作品</a>
-          </div>
-          <div class="hero-proof" aria-label="服務特色">
-            <div><strong>依季節</strong><span>花材彈性提案</span></div>
-            <div><strong>四類</strong><span>花藝服務方向</span></div>
-            <div><strong>一對一</strong><span>需求與預算討論</span></div>
+            <a class="underline" href="#portfolio">VIEW WORKS</a>
+            <button class="underline" type="button" data-open-booking>BOOK A CONSULTATION</button>
           </div>
         </div>
-        <figure class="hero-media image-slot">
-          <img data-image-key="heroImage" src="/assets/images/hero/hero-main-v1.webp" width="900" height="1200" alt="粉白色花藝展示作品" fetchpriority="high" decoding="async">
-          <button class="image-edit-button" type="button" data-replace-image="heroImage">更換照片</button>
-          <figcaption class="hero-caption"><small>MORAN FLORAL STYLE</small><strong data-edit-key="heroCaption">光影、留白與自然線條</strong></figcaption>
-        </figure>
+        <div class="hero-proof" aria-label="服務特色">
+          <div><strong>依季節</strong><span>花材彈性提案</span></div>
+          <div><strong>四類</strong><span>花藝服務方向</span></div>
+          <div><strong>一對一</strong><span>需求與預算討論</span></div>
+        </div>
       </div>
+      <div class="hero-scroll" aria-hidden="true">SCROLL ↓</div>
     </section>
 
-    <section id="philosophy" class="section section-alt">
-      <div class="container">
-        <div class="philosophy"><span class="eyebrow">Brand Philosophy</span><h2 class="section-title" data-edit-key="philosophyTitle">尋常之物，亦有詩意</h2><blockquote data-edit-key="philosophyQuote">花藝不只在盛放時成立，也存在於枝葉的舒展、器皿與空間的留白。默藍以克制的色彩與自然線條，陪每一份委託找到適合自己的節奏。</blockquote></div>
-        <div class="values">
-          <article class="value"><b>01</b><h3 data-edit-key="valueTitle1">順應花材</h3><p data-edit-key="valueBody1">以季節可取得的花材為基礎，保留自然姿態；如遇缺花，先以相近色系與質感討論替代方案。</p></article>
-          <article class="value"><b>02</b><h3 data-edit-key="valueTitle2">回應空間</h3><p data-edit-key="valueBody2">從尺寸、光線、動線與觀看距離出發，避免只看單一作品而忽略實際場域。</p></article>
-          <article class="value"><b>03</b><h3 data-edit-key="valueTitle3">尊重委託</h3><p data-edit-key="valueBody3">在製作前確認用途、預算、日期與偏好，讓設計期待與可執行範圍保持一致。</p></article>
+    <figure class="slit image-slot" style="margin:0">
+      <img id="heroImage" data-image-key="heroImage" src="/assets/images/hero/hero-main-v1.webp" width="900" height="1200" alt="粉白色花藝展示作品" fetchpriority="high" decoding="async">
+      <button class="image-edit-button" type="button" data-replace-image="heroImage">更換照片</button>
+      <figcaption class="slit-caption"><span>MORAN FLORAL STYLE</span><span data-edit-key="heroCaption">光影、留白與自然線條</span></figcaption>
+    </figure>
+
+    <section id="philosophy" class="section">
+      <div class="container philosophy-grid reveal">
+        <div class="vertical philosophy-vertical" aria-hidden="true">尋常之物・亦有詩意</div>
+        <div>
+          <span class="eyebrow">Brand Philosophy</span>
+          <h2 class="section-title" data-edit-key="philosophyTitle">尋常之物，亦有詩意</h2>
+          <blockquote class="philosophy-quote" style="margin:44px 0 0" data-edit-key="philosophyQuote">花藝不只在盛放時成立，也存在於枝葉的舒展、器皿與空間的留白。默藍以克制的色彩與自然線條，陪每一份委託找到適合自己的節奏。</blockquote>
+          <div class="values">
+            <article class="value"><b>Ⅰ</b><h3 data-edit-key="valueTitle1">順應花材</h3><p data-edit-key="valueBody1">以季節可取得的花材為基礎，保留自然姿態；如遇缺花，先以相近色系與質感討論替代方案。</p></article>
+            <article class="value"><b>Ⅱ</b><h3 data-edit-key="valueTitle2">回應空間</h3><p data-edit-key="valueBody2">從尺寸、光線、動線與觀看距離出發，避免只看單一作品而忽略實際場域。</p></article>
+            <article class="value"><b>Ⅲ</b><h3 data-edit-key="valueTitle3">尊重委託</h3><p data-edit-key="valueBody3">在製作前確認用途、預算、日期與偏好，讓設計期待與可執行範圍保持一致。</p></article>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="services" class="section">
-      <div class="container">
-        <div class="section-head"><div><span class="eyebrow">Core Services</span><h2 class="section-title" data-edit-key="servicesTitle">核心服務</h2></div><p class="section-lead" data-edit-key="servicesLead">下列內容是諮詢方向，不是固定套裝。實際花材、尺寸、交付方式與報價，會依需求逐案確認。</p></div>
-        <div class="services">
-          <article class="service"><div class="image-slot"><img data-image-key="serviceSpace" src="/assets/images/service/service-space-v1.webp" width="800" height="600" loading="lazy" decoding="async" alt="金色圓框與花材構成的空間花藝"><button class="image-edit-button" type="button" data-replace-image="serviceSpace">更換照片</button></div><h3 data-edit-key="serviceTitle1">空間花藝陳列</h3><p data-edit-key="serviceBody1">商業場域、迎賓區或居家空間的花藝配置，依現場條件與維護需求討論。</p><button class="btn btn-outline" type="button" data-service="空間花藝陳列">諮詢空間花藝</button></article>
-          <article class="service"><div class="image-slot"><img data-image-key="serviceWedding" src="/assets/images/service/service-wedding-v1.webp" width="800" height="600" loading="lazy" decoding="async" alt="婚禮迎賓區大型花藝佈置"><button class="image-edit-button" type="button" data-replace-image="serviceWedding">更換照片</button></div><h3 data-edit-key="serviceTitle2">婚禮花藝設計</h3><p data-edit-key="serviceBody2">從捧花、胸花到儀式與迎賓區佈置，依場地、主題與預算確認製作範圍。</p><button class="btn btn-outline" type="button" data-service="婚禮花藝設計">諮詢婚禮花藝</button></article>
-          <article class="service"><div class="image-slot"><img data-image-key="serviceGift" src="/assets/images/service/service-gift-v1.webp" width="600" height="800" loading="lazy" decoding="async" alt="藍白色系客製花禮"><button class="image-edit-button" type="button" data-replace-image="serviceGift">更換照片</button></div><h3 data-edit-key="serviceTitle3">客製花禮訂製</h3><p data-edit-key="serviceBody3">生日、紀念、祝福與企業贈禮，可從色系、心意、尺寸與預算開始討論。</p><button class="btn btn-outline" type="button" data-service="客製花禮訂製">諮詢客製花禮</button></article>
-          <article class="service"><div class="image-slot"><img data-image-key="serviceWorkshop" src="/assets/images/service/service-workshop-v1.webp" width="800" height="640" loading="lazy" decoding="async" alt="花藝工作坊學員製作花禮"><button class="image-edit-button" type="button" data-replace-image="serviceWorkshop">更換照片</button></div><h3 data-edit-key="serviceTitle4">實體花藝課程</h3><p data-edit-key="serviceBody4">課程內容、材料與開課日期依當期公告；可先留下希望學習的主題與人數。</p><button class="btn btn-outline" type="button" data-service="實體花藝課程">詢問課程資訊</button></article>
-        </div>
+    <section id="services" class="sumi">
+      <div class="container sumi-head">
+        <div><span class="eyebrow">Core Services</span><h2 class="section-title" data-edit-key="servicesTitle">核心服務</h2></div>
+        <p class="section-lead" data-edit-key="servicesLead">下列內容是諮詢方向，不是固定套裝。實際花材、尺寸、交付方式與報價，會依需求逐案確認。</p>
+      </div>
+      <div class="panels">
+        <article class="panel">
+          <div class="image-slot"><img data-image-key="serviceSpace" src="/assets/images/service/service-space-v1.webp" width="800" height="600" loading="lazy" decoding="async" alt="金色圓框與花材構成的空間花藝"><button class="image-edit-button" type="button" data-replace-image="serviceSpace">更換照片</button></div>
+          <div class="panel-scrim"></div>
+          <div class="panel-body">
+            <span class="panel-no">Ⅰ</span>
+            <div class="panel-vertical-wrap" aria-hidden="true"><span class="vertical panel-vertical">空間花藝</span></div>
+            <div class="panel-copy">
+              <h3 data-edit-key="serviceTitle1">空間花藝陳列</h3>
+              <p data-edit-key="serviceBody1">商業場域、迎賓區或居家空間的花藝配置，依現場條件與維護需求討論。</p>
+              <button class="panel-cta underline" type="button" data-service="空間花藝陳列">諮詢空間花藝 →</button>
+            </div>
+          </div>
+        </article>
+        <article class="panel">
+          <div class="image-slot"><img data-image-key="serviceWedding" src="/assets/images/service/service-wedding-v1.webp" width="800" height="600" loading="lazy" decoding="async" alt="婚禮迎賓區大型花藝佈置"><button class="image-edit-button" type="button" data-replace-image="serviceWedding">更換照片</button></div>
+          <div class="panel-scrim"></div>
+          <div class="panel-body">
+            <span class="panel-no">Ⅱ</span>
+            <div class="panel-vertical-wrap" aria-hidden="true"><span class="vertical panel-vertical">婚禮花藝</span></div>
+            <div class="panel-copy">
+              <h3 data-edit-key="serviceTitle2">婚禮花藝設計</h3>
+              <p data-edit-key="serviceBody2">從捧花、胸花到儀式與迎賓區佈置，依場地、主題與預算確認製作範圍。</p>
+              <button class="panel-cta underline" type="button" data-service="婚禮花藝設計">諮詢婚禮花藝 →</button>
+            </div>
+          </div>
+        </article>
+        <article class="panel">
+          <div class="image-slot"><img data-image-key="serviceGift" src="/assets/images/service/service-gift-v1.webp" width="600" height="800" loading="lazy" decoding="async" alt="藍白色系客製花禮"><button class="image-edit-button" type="button" data-replace-image="serviceGift">更換照片</button></div>
+          <div class="panel-scrim"></div>
+          <div class="panel-body">
+            <span class="panel-no">Ⅲ</span>
+            <div class="panel-vertical-wrap" aria-hidden="true"><span class="vertical panel-vertical">客製花禮</span></div>
+            <div class="panel-copy">
+              <h3 data-edit-key="serviceTitle3">客製花禮訂製</h3>
+              <p data-edit-key="serviceBody3">生日、紀念、祝福與企業贈禮，可從色系、心意、尺寸與預算開始討論。</p>
+              <button class="panel-cta underline" type="button" data-service="客製花禮訂製">諮詢客製花禮 →</button>
+            </div>
+          </div>
+        </article>
+        <article class="panel">
+          <div class="image-slot"><img data-image-key="serviceWorkshop" src="/assets/images/service/service-workshop-v1.webp" width="800" height="640" loading="lazy" decoding="async" alt="花藝工作坊學員製作花禮"><button class="image-edit-button" type="button" data-replace-image="serviceWorkshop">更換照片</button></div>
+          <div class="panel-scrim"></div>
+          <div class="panel-body">
+            <span class="panel-no">Ⅳ</span>
+            <div class="panel-vertical-wrap" aria-hidden="true"><span class="vertical panel-vertical">花藝課程</span></div>
+            <div class="panel-copy">
+              <h3 data-edit-key="serviceTitle4">實體花藝課程</h3>
+              <p data-edit-key="serviceBody4">課程內容、材料與開課日期依當期公告；可先留下希望學習的主題與人數。</p>
+              <button class="panel-cta underline" type="button" data-service="實體花藝課程">詢問課程資訊 →</button>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
-    <section id="portfolio" class="section section-alt">
+    <section id="portfolio" class="section">
       <div class="container">
-        <div class="philosophy"><span class="eyebrow">Style Portfolio</span><h2 class="section-title" data-edit-key="portfolioTitle">風格作品參考</h2><p class="section-lead" data-edit-key="portfolioLead">用現有作品說明色彩、構圖與服務方向。</p></div>
-        <p class="portfolio-note" data-edit-key="portfolioNote">以下圖片作為風格與品項參考，不代表特定客戶案例或固定可複製成品；花材會依季節、供應與實際委託內容調整。</p>
-        <div class="filters" aria-label="作品分類">
-          <button class="filter active" type="button" data-filter="all" aria-pressed="true">全部</button><button class="filter" type="button" data-filter="space" aria-pressed="false">空間花藝</button><button class="filter" type="button" data-filter="wedding" aria-pressed="false">婚禮花藝</button><button class="filter" type="button" data-filter="gift" aria-pressed="false">客製花禮</button>
+        <div class="reveal">
+          <span class="eyebrow">Style Portfolio</span>
+          <h2 class="section-title" data-edit-key="portfolioTitle">風格作品參考</h2>
+          <p class="section-lead" data-edit-key="portfolioLead">用現有作品說明色彩、構圖與服務方向。</p>
+          <p class="section-lead" data-edit-key="portfolioNote">以下圖片作為風格與品項參考，不代表特定客戶案例或固定可複製成品；花材會依季節、供應與實際委託內容調整。</p>
+          <div class="filters" aria-label="作品分類">
+            <button class="filter active" type="button" data-filter="all" aria-pressed="true">全部</button><button class="filter" type="button" data-filter="space" aria-pressed="false">空間花藝</button><button class="filter" type="button" data-filter="wedding" aria-pressed="false">婚禮花藝</button><button class="filter" type="button" data-filter="gift" aria-pressed="false">客製花禮</button>
+          </div>
         </div>
-        <div id="portfolioGrid" class="portfolio-grid" aria-live="polite"></div>
+        <div id="portfolioGrid" class="portfolio-grid reveal" aria-live="polite"></div>
       </div>
     </section>
 
     <section id="process" class="section">
       <div class="container">
-        <div class="section-head"><div><span class="eyebrow">Booking Process</span><h2 class="section-title" data-edit-key="processTitle">預約與製作流程</h2></div><p class="section-lead" data-edit-key="processLead">先把需求說清楚，再進入設計與製作。每一階段的範圍、費用與日期都應以雙方確認內容為準。</p></div>
-        <div class="process">
+        <div class="reveal">
+          <span class="eyebrow">Booking Process</span>
+          <h2 class="section-title" data-edit-key="processTitle">預約與製作流程</h2>
+          <p class="section-lead" data-edit-key="processLead">先把需求說清楚，再進入設計與製作。每一階段的範圍、費用與日期都應以雙方確認內容為準。</p>
+        </div>
+        <div class="process reveal">
           <article class="step"><span>01</span><h3 data-edit-key="stepTitle1">留下需求</h3><p data-edit-key="stepBody1">提供服務類型、日期、地點、預算、聯絡方式與風格備註。</p></article>
           <article class="step"><span>02</span><h3 data-edit-key="stepTitle2">確認可行性</h3><p data-edit-key="stepBody2">團隊依檔期、花材、尺寸與執行條件回覆是否承接及需要補充的資料。</p></article>
           <article class="step"><span>03</span><h3 data-edit-key="stepTitle3">提案與報價</h3><p data-edit-key="stepBody3">確認設計方向、交付內容、費用、付款節點，以及變更或取消條件。</p></article>
@@ -383,21 +535,42 @@
       </div>
     </section>
 
-    <section id="faq" class="section section-alt">
-      <div class="container info-grid">
-        <div class="info-panel"><span class="eyebrow">Service Notes</span><h2 class="section-title" data-edit-key="serviceNotesTitle">諮詢前先知道</h2><ul class="info-list"><li><strong>預算：</strong>表單提供四個常見區間，正式費用仍依花材、尺寸與執行範圍報價。</li><li><strong>地區：</strong>請在表單填寫縣市與場地；是否可配送或進場，會依個案確認。</li><li><strong>花材：</strong>季節與供應會影響品項，替代花材以相近色系、質感與預算為原則討論。</li><li><strong>時間：</strong>越接近需求日期，可選花材與調整空間越有限；急件請直接透過 LINE 詢問。</li></ul></div>
-        <div><span class="eyebrow">FAQ</span><h2 class="section-title" data-edit-key="faqTitle">常見問題</h2>
-          <details><summary data-edit-key="faqQuestion1">需要提前多久詢問？</summary><p data-edit-key="faqAnswer1">不同服務需要的準備時間不同。請先填寫希望日期，團隊會依檔期與製作規模判斷；大型空間或婚禮專案建議儘早詢問。</p></details>
-          <details><summary data-edit-key="faqQuestion2">可以指定與照片完全一樣嗎？</summary><p data-edit-key="faqAnswer2">照片可用來溝通色系、氛圍與構圖，但自然花材會受季節、產地與批次影響，因此不承諾完全複製。</p></details>
-          <details><summary data-edit-key="faqQuestion3">價格是否就是表單中的預算區間？</summary><p data-edit-key="faqAnswer3">預算區間用來協助初步判斷，不是固定售價。正式報價會列出已確認的製作與交付範圍。</p></details>
-          <details><summary data-edit-key="faqQuestion4">送出表單後可以修改嗎？</summary><p data-edit-key="faqAnswer4">尚未確認報價前可補充需求；進入備料或製作後的變更與取消，則依雙方確認的案件條件處理。</p></details>
-          <details><summary data-edit-key="faqQuestion5">個人資料會如何使用？</summary><p data-edit-key="faqAnswer5">表單中的姓名、電話、LINE ID 與案件資訊，只用於本次諮詢、聯絡與後續服務；請不要填入身分證、金融帳號等不必要的敏感資料。</p></details>
+    <section id="faq" class="section">
+      <div class="container faq-grid reveal">
+        <div class="faq-side">
+          <span class="eyebrow">Service Notes</span>
+          <h2 class="section-title" data-edit-key="serviceNotesTitle">諮詢前先知道</h2>
+          <ul class="info-list">
+            <li><strong>預算：</strong>表單提供四個常見區間，正式費用仍依花材、尺寸與執行範圍報價。</li>
+            <li><strong>地區：</strong>請在表單填寫縣市與場地；是否可配送或進場，會依個案確認。</li>
+            <li><strong>花材：</strong>季節與供應會影響品項，替代花材以相近色系、質感與預算為原則討論。</li>
+            <li><strong>時間：</strong>越接近需求日期，可選花材與調整空間越有限；急件請直接透過 LINE 詢問。</li>
+          </ul>
+        </div>
+        <div>
+          <span class="eyebrow">FAQ</span>
+          <h2 class="section-title" data-edit-key="faqTitle">常見問題</h2>
+          <div class="faq-list" style="margin-top:44px">
+            <details><summary data-edit-key="faqQuestion1">需要提前多久詢問？</summary><p data-edit-key="faqAnswer1">不同服務需要的準備時間不同。請先填寫希望日期，團隊會依檔期與製作規模判斷；大型空間或婚禮專案建議儘早詢問。</p></details>
+            <details><summary data-edit-key="faqQuestion2">可以指定與照片完全一樣嗎？</summary><p data-edit-key="faqAnswer2">照片可用來溝通色系、氛圍與構圖，但自然花材會受季節、產地與批次影響，因此不承諾完全複製。</p></details>
+            <details><summary data-edit-key="faqQuestion3">價格是否就是表單中的預算區間？</summary><p data-edit-key="faqAnswer3">預算區間用來協助初步判斷，不是固定售價。正式報價會列出已確認的製作與交付範圍。</p></details>
+            <details><summary data-edit-key="faqQuestion4">送出表單後可以修改嗎？</summary><p data-edit-key="faqAnswer4">尚未確認報價前可補充需求；進入備料或製作後的變更與取消，則依雙方確認的案件條件處理。</p></details>
+            <details><summary data-edit-key="faqQuestion5">個人資料會如何使用？</summary><p data-edit-key="faqAnswer5">表單中的姓名、電話、LINE ID 與案件資訊，只用於本次諮詢、聯絡與後續服務；請不要填入身分證、金融帳號等不必要的敏感資料。</p></details>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="section contact">
-      <div class="container"><span class="eyebrow">Start a Conversation</span><h2 class="section-title" data-edit-key="contactTitle">從一段需求，開始一束花</h2><p class="section-lead" data-edit-key="contactCopy">可使用官網表單整理需求，或直接加入 LINE 官方帳號 @474xknil。送出表單成功後，畫面會顯示諮詢單號；若傳送失敗，不會顯示假成功。</p><div class="contact-actions"><button class="btn" type="button" data-open-booking>填寫預約表單</button><a class="btn btn-line" href="https://line.me/R/ti/p/%40474xknil" target="_blank" rel="noopener noreferrer">加入 LINE 官方帳號</a></div></div>
+    <section id="contact" class="sumi contact">
+      <div class="container">
+        <span class="eyebrow">Start a Conversation</span>
+        <h2 class="section-title" data-edit-key="contactTitle">從一段需求，開始一束花</h2>
+        <p class="section-lead" data-edit-key="contactCopy">可使用官網表單整理需求，或直接加入 LINE 官方帳號 @474xknil。送出表單成功後，畫面會顯示諮詢單號；若傳送失敗，不會顯示假成功。</p>
+        <div class="contact-actions">
+          <button class="btn" type="button" data-open-booking>填寫預約表單</button>
+          <a class="btn btn-line" href="https://line.me/R/ti/p/%40474xknil" target="_blank" rel="noopener noreferrer">加入 LINE 官方帳號</a>
+        </div>
+      </div>
     </section>
   </main>
 
@@ -407,6 +580,9 @@
       <p class="footer-credit"><span data-edit-key="footerCreditPrefix">設計與規劃由</span><a id="footerAdminLink" class="footer-admin-link" href="#admin-login" aria-label="莫珩管理團隊：進入網站管理模式">莫珩</a><span data-edit-key="footerCreditSuffix">管理團隊 極致打造</span></p>
     </div>
   </footer>
+
+  <div class="grain" aria-hidden="true"></div>
+  <div id="cursorDot" aria-hidden="true"></div>
 
   <div id="bookingModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="bookingTitle" aria-describedby="bookingDescription">
     <div class="modal-panel" tabindex="-1">
@@ -433,13 +609,13 @@
   </div>
 
   <div id="successModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="successTitle" aria-describedby="successDescription">
-    <div class="modal-panel admin-login-panel success" tabindex="-1">
+    <div class="modal-panel success" tabindex="-1">
       <div class="success-mark" aria-hidden="true">✓</div><h2 id="successTitle">諮詢單已成功送出</h2><p id="successDescription">伺服器已確認收到資料。團隊會依案件內容與檔期後續聯絡。</p><div id="bookingRef" class="ref-code"></div><div class="success-actions"><button id="closeSuccess" class="btn" type="button">完成</button></div>
     </div>
   </div>
 
   <button id="adminEntry" class="admin-entry" type="button" aria-label="進入網站編輯模式" title="網站編輯模式">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4Z"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4Z"/></svg>
   </button>
 
   <div id="adminLoginModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="adminLoginTitle" aria-describedby="adminLoginHelp">
@@ -465,13 +641,13 @@
 
   <script>
     const portfolioItems = [
-      { category: 'space', title: '粉白立體花藝與留白', titleKey: 'portfolioItemTitle1', tag: '空間花藝風格參考', image: '/assets/images/portfolio/port-space-1-v1.webp', imageKey: 'portfolioImage1', width: 750, height: 1000, alt: '粉白色大型桌上花藝' },
-      { category: 'space', title: '金色圓框節慶花藝', titleKey: 'portfolioItemTitle2', tag: '空間花藝風格參考', image: '/assets/images/portfolio/port-space-2-v1.webp', imageKey: 'portfolioImage2', width: 1000, height: 750, alt: '金色圓框與花材組成的掛飾' },
-      { category: 'wedding', title: '迎賓區大型花藝', titleKey: 'portfolioItemTitle3', tag: '婚禮花藝風格參考', image: '/assets/images/portfolio/port-wedding-1-v1.webp', imageKey: 'portfolioImage3', width: 1000, height: 750, alt: '婚禮迎賓背板與大型花藝' },
-      { category: 'wedding', title: '粉色層次捧花', titleKey: 'portfolioItemTitle4', tag: '婚禮花藝風格參考', image: '/assets/images/portfolio/port-wedding-2-v1.webp', imageKey: 'portfolioImage4', width: 750, height: 1000, alt: '粉紅與白色層次花束' },
-      { category: 'gift', title: '莫蘭迪藍桌上花禮', titleKey: 'portfolioItemTitle5', tag: '客製花禮風格參考', image: '/assets/images/portfolio/port-gift-1-v1.webp', imageKey: 'portfolioImage5', width: 750, height: 1000, alt: '藍白色系桌上花禮' },
-      { category: 'gift', title: '祝福主題花束', titleKey: 'portfolioItemTitle6', tag: '客製花禮風格參考', image: '/assets/images/portfolio/port-gift-2-v1.webp', imageKey: 'portfolioImage6', width: 750, height: 1000, alt: '白色包裝的祝福主題花束' },
-      { category: 'gift', title: '多品項花禮陳列', titleKey: 'portfolioItemTitle7', tag: '客製花禮風格參考', image: '/assets/images/portfolio/port-gift-3-v1.webp', imageKey: 'portfolioImage7', width: 1000, height: 750, alt: '多款粉藍色系花禮陳列' }
+      { category: 'space', title: '粉白立體花藝與留白', titleKey: 'portfolioItemTitle1', tag: 'SPACE', image: '/assets/images/portfolio/port-space-1-v1.webp', imageKey: 'portfolioImage1', width: 750, height: 1000, alt: '粉白色大型桌上花藝' },
+      { category: 'space', title: '金色圓框節慶花藝', titleKey: 'portfolioItemTitle2', tag: 'SPACE', image: '/assets/images/portfolio/port-space-2-v1.webp', imageKey: 'portfolioImage2', width: 1000, height: 750, alt: '金色圓框與花材組成的掛飾' },
+      { category: 'wedding', title: '迎賓區大型花藝', titleKey: 'portfolioItemTitle3', tag: 'WEDDING', image: '/assets/images/portfolio/port-wedding-1-v1.webp', imageKey: 'portfolioImage3', width: 1000, height: 750, alt: '婚禮迎賓背板與大型花藝' },
+      { category: 'wedding', title: '粉色層次捧花', titleKey: 'portfolioItemTitle4', tag: 'WEDDING', image: '/assets/images/portfolio/port-wedding-2-v1.webp', imageKey: 'portfolioImage4', width: 750, height: 1000, alt: '粉紅與白色層次花束' },
+      { category: 'gift', title: '莫蘭迪藍桌上花禮', titleKey: 'portfolioItemTitle5', tag: 'GIFT', image: '/assets/images/portfolio/port-gift-1-v1.webp', imageKey: 'portfolioImage5', width: 750, height: 1000, alt: '藍白色系桌上花禮' },
+      { category: 'gift', title: '祝福主題花束', titleKey: 'portfolioItemTitle6', tag: 'GIFT', image: '/assets/images/portfolio/port-gift-2-v1.webp', imageKey: 'portfolioImage6', width: 750, height: 1000, alt: '白色包裝的祝福主題花束' },
+      { category: 'gift', title: '多品項花禮陳列', titleKey: 'portfolioItemTitle7', tag: 'GIFT', image: '/assets/images/portfolio/port-gift-3-v1.webp', imageKey: 'portfolioImage7', width: 1000, height: 750, alt: '多款粉藍色系花禮陳列' }
     ];
     const bookingModal = document.getElementById('bookingModal');
     const successModal = document.getElementById('successModal');
@@ -484,6 +660,9 @@
     const adminToolbar = document.getElementById('adminToolbar');
     const adminStatus = document.getElementById('adminStatus');
     const adminImageInput = document.getElementById('adminImageInput');
+    const siteNav = document.getElementById('siteNav');
+    const heroGhost = document.getElementById('heroGhost');
+    const heroImage = document.getElementById('heroImage');
     const contentState = { text: {}, images: {} };
     let activeFilter = 'all';
     let bookingOpenedAt = 0;
@@ -496,13 +675,14 @@
 
     const escapeHtml = value => String(value).replace(/[&<>'"]/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[character]);
 
+    /* 侘寂版：不移除非同分類作品，改為淡出，保留版面節奏。 */
     function renderPortfolio(filter = activeFilter) {
       activeFilter = filter;
-      const items = filter === 'all' ? portfolioItems : portfolioItems.filter(item => item.category === filter);
-      document.getElementById('portfolioGrid').innerHTML = items.map(item => {
+      document.getElementById('portfolioGrid').innerHTML = portfolioItems.map(item => {
         const image = contentState.images[item.imageKey] || item.image;
         const title = Object.hasOwn(contentState.text, item.titleKey) ? contentState.text[item.titleKey] : item.title;
-        return `<article class="work"><div class="image-slot"><img data-image-key="${item.imageKey}" src="${escapeHtml(image)}" width="${item.width}" height="${item.height}" loading="lazy" decoding="async" alt="${escapeHtml(item.alt)}"><button class="image-edit-button" type="button" data-replace-image="${item.imageKey}">更換照片</button></div><div class="work-copy"><small>${item.tag}</small><h3 data-edit-key="${item.titleKey}"${adminEditing ? ' contenteditable="true"' : ''}>${escapeHtml(title)}</h3></div></article>`;
+        const dim = filter !== 'all' && item.category !== filter ? ' dim' : '';
+        return `<article class="work${dim}"><div class="image-slot"><img data-image-key="${item.imageKey}" src="${escapeHtml(image)}" width="${item.width}" height="${item.height}" loading="lazy" decoding="async" alt="${escapeHtml(item.alt)}"><button class="image-edit-button" type="button" data-replace-image="${item.imageKey}">更換照片</button></div><div class="work-copy"><h3 data-edit-key="${item.titleKey}"${adminEditing ? ' contenteditable="true"' : ''}>${escapeHtml(title)}</h3><small>${item.tag}</small></div></article>`;
       }).join('');
     }
 
@@ -610,13 +790,57 @@
       }
     }
 
+    /* ── 視覺行為：導覽收縮、視差、逐段淡入、游標 ── */
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function onScroll() {
+      const y = window.scrollY;
+      siteNav.classList.toggle('scrolled', y > 60);
+      if (reduceMotion) return;
+      if (heroGhost) heroGhost.style.translate = `0 ${Math.min(y * 0.12, 120)}px`;
+      if (heroImage) heroImage.style.translate = `0 ${Math.min(Math.max(y - 400, 0), 1400) * -0.06}px`;
+    }
+
+    function setupReveals() {
+      if (reduceMotion || !('IntersectionObserver' in window)) {
+        document.querySelectorAll('.reveal').forEach(element => element.classList.add('in'));
+        return;
+      }
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('in'); observer.unobserve(entry.target); } });
+      }, { threshold: 0.1, rootMargin: '0px 0px -6% 0px' });
+      document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
+    }
+
+    function setupCursor() {
+      const dot = document.getElementById('cursorDot');
+      if (!dot || reduceMotion || !window.matchMedia('(pointer:fine)').matches) return;
+      document.body.classList.add('has-dot');
+      let targetX = -100, targetY = -100, currentX = -100, currentY = -100;
+      window.addEventListener('mousemove', event => { targetX = event.clientX; targetY = event.clientY; }, { passive: true });
+      window.addEventListener('mouseover', event => {
+        dot.classList.toggle('near', Boolean(event.target.closest?.('a, button, label, summary, input, select, textarea')));
+      }, { passive: true });
+      (function loop() {
+        currentX += (targetX - currentX) * 0.18;
+        currentY += (targetY - currentY) * 0.18;
+        dot.style.transform = `translate(${currentX - 13}px, ${currentY - 13}px)`;
+        window.requestAnimationFrame(loop);
+      })();
+    }
+
     document.addEventListener('DOMContentLoaded', async () => {
       renderPortfolio();
       setTheme(localStorage.getItem('moran_theme_mode') === 'dark');
       const today = new Date();
       document.getElementById('bookingDate').min = new Date(today.getTime() - today.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+      setupReveals();
+      setupCursor();
+      onScroll();
       await loadContent();
     });
+
+    window.addEventListener('scroll', onScroll, { passive: true });
 
     document.querySelectorAll('[data-theme-toggle]').forEach(button => button.addEventListener('click', () => setTheme(!document.documentElement.classList.contains('dark'))));
     document.querySelectorAll('[data-open-booking]').forEach(button => button.addEventListener('click', () => openBooking()));
@@ -666,7 +890,7 @@
       };
       try {
         const result = await requestJson('/api/booking', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
-        document.getElementById('bookingRef').textContent = result.refCode;
+        document.getElementById('bookingRef').textContent = `單號 ${result.refCode}`;
         hideModal(bookingModal, false);
         form.reset();
         showModal(successModal);
