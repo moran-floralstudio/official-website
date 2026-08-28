@@ -1,7 +1,8 @@
 # Handoff Spec：默藍花藝官網 v3（Hybrid／侘寂改版）
 
 as-built 規格 — 本文所有數值皆取自已實作的 `index.html`，非設計稿推測值。
-設計參考稿：`design_handoff_moran_floral_v3/Moran Floral Hybrid.dc.html`（`.dc.html` 為設計格式，未移植其 `support.js`）。
+
+設計參考稿為 `Moran Floral Hybrid.dc.html`（`.dc.html` 是「模板 + 邏輯類別」的設計格式），**未納入本 repo**，僅存於設計交付壓縮檔中。實作時只取其外觀與互動行為，改寫為原生 HTML／CSS／JS，未移植其 `support.js`。
 
 ## Overview
 

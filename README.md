@@ -76,6 +76,8 @@ node scripts/hash-admin-password.mjs
 | 服務圖片 | 800 × 600 左右 | `assets/images/service/*-v1.webp` |
 | 作品圖片 | 750 × 1000 或 1000 × 750 | `assets/images/portfolio/*-v1.webp` |
 
+`source-images/` 存放未經壓縮的設計原始 PNG（約 17 MB），**站台不引用、不部署**（由組建命令排除）。要換圖時從這裡取原圖，轉成 WebP 後放進 `assets/images/` 對應子資料夾並更新 `assets/image-urls.json`。不要把原始 PNG 直接放進 `assets/`。
+
 執行圖片清單驗證：
 
 ```powershell
@@ -121,9 +123,11 @@ Pages 專案 `moran-floralstudio` 已連線至 `moran-floralstudio/official-webs
 | Framework 預設 | 無 | 純靜態，無前端建置 |
 | 組建輸出目錄 | `/`（留空） | 站台檔案就在 repo 根目錄 |
 | 根目錄 | 留空 | 同上 |
-| 組建命令 | `rm -rf docs` | 見下 |
+| 組建命令 | `rm -rf docs tests scripts README.md image-manager.js source-images` | 見下 |
 
-**為什麼組建命令是一行 `rm`**：輸出目錄是 repo 根目錄，所以根目錄下的每個檔案都會被當成公開靜態資源上傳。`docs/` 是給開發者看的規格文件，不該被搜尋引擎索引，因此在組建階段從工作目錄移除（只影響 Cloudflare 的暫存 clone，不動 repo）。若日後也要排除 `tests/`、`scripts/`、`README.md`，加到同一行即可。
+**為什麼組建命令是一行 `rm`**：輸出目錄是 repo 根目錄，所以根目錄下的每個檔案都會被當成公開靜態資源上傳。文件、測試、維護腳本與設計原始圖都不該對外提供，因此在組建階段從工作目錄移除 —— **只影響 Cloudflare 的暫存 clone，不動 repo 與本機**。新增這類非站台檔案時，記得同步加進這一行。
+
+若組建命令沒設定或設錯，這些檔案會直接變成可公開下載的靜態資源。改完組建設定**不會自動重跑部署**，要推一個 commit（或在後台按「重試部署」）才會套用。
 
 - 部署前先設定 `BOOKING_WEBHOOK_URL`、三個管理 secrets 與 `SITE_CONTENT` R2 binding。
 - 部署後必須實際檢查首頁、手機版、圖片、`robots.txt`、`sitemap.xml` 與預約成功／失敗流程。
