@@ -1,0 +1,761 @@
+<!doctype html>
+<html lang="zh-Hant" class="scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>默藍花藝設計｜Moran Floral Studio</title>
+  <meta name="description" content="默藍花藝以日式侘寂美學，提供空間花藝、婚禮花藝、客製花禮與實體花藝課程的預約諮詢。">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="默藍花藝設計｜Moran Floral Studio">
+  <meta property="og:description" content="把花開的瞬間，留在日常裡。以日式侘寂美學，為重要時刻與生活空間訂製花藝。">
+  <meta property="og:url" content="https://moran-floral.studio/">
+  <meta property="og:image" content="https://moran-floral.studio/assets/images/hero/hero-og-v1.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://moran-floral.studio/">
+  <link rel="alternate" hreflang="zh-Hant-TW" href="https://moran-floral.studio/">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/assets/images/hero/hero-main-v1.webp" as="image" type="image/webp" fetchpriority="high">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Florist",
+    "name": "默藍花藝設計 Moran Floral Studio",
+    "url": "https://moran-floral.studio/",
+    "image": "https://moran-floral.studio/assets/images/hero/hero-og-v1.jpg",
+    "description": "以日式侘寂美學提供空間花藝、婚禮花藝、客製花禮與實體花藝課程預約諮詢。",
+    "sameAs": ["https://line.me/R/ti/p/%40474xknil"]
+  }
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f5f3ef;
+      --paper-2: #e8e4dd;
+      --ink: #2b3540;
+      --muted: #525b64;
+      --blue: #5b738e;
+      --blue-dark: #44586f;
+      --sage: #8fa08e;
+      --clay: #b38a7d;
+      --line: rgba(91, 115, 142, .2);
+      --surface: rgba(255, 255, 255, .4);
+      --shadow: 0 24px 70px rgba(43, 53, 64, .13);
+      --heading: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      --body: "Noto Serif TC", "PMingLiU", serif;
+    }
+    html.dark {
+      color-scheme: dark;
+      --paper: #121a22;
+      --paper-2: #2a3a4a;
+      --ink: #f4f3ee;
+      --muted: rgba(244, 243, 238, .72);
+      --blue: #b38a7d;
+      --blue-dark: #9e7467;
+      --clay: #c69b8d;
+      --line: rgba(244, 243, 238, .14);
+      --surface: rgba(42, 58, 74, .48);
+      --shadow: 0 24px 70px rgba(0, 0, 0, .32);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 86px; }
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      background:
+        radial-gradient(rgba(91,115,142,.05) 1px, transparent 1px) 0 0 / 28px 28px,
+        var(--paper);
+      color: var(--ink);
+      font-family: var(--body);
+      letter-spacing: .045em;
+      line-height: 1.8;
+      transition: background-color .3s ease, color .3s ease;
+    }
+    body.modal-open { overflow: hidden; }
+    h1, h2, h3, h4, button, .heading { font-family: var(--heading); }
+    h1, h2, h3, h4, p { margin-top: 0; }
+    a { color: inherit; }
+    img { display: block; max-width: 100%; }
+    button, input, select, textarea { font: inherit; }
+    button { cursor: pointer; }
+    button:disabled { cursor: wait; opacity: .65; }
+    :focus-visible { outline: 3px solid var(--clay); outline-offset: 3px; }
+    .skip-link { position: fixed; top: -80px; left: 16px; z-index: 100; padding: 10px 16px; background: var(--ink); color: var(--paper); }
+    .skip-link:focus { top: 12px; }
+    .container { width: min(1180px, calc(100% - 40px)); margin-inline: auto; }
+    .section { padding: 104px 0; border-bottom: 1px solid var(--line); }
+    .section-alt { background: color-mix(in srgb, var(--paper-2) 42%, transparent); }
+    .eyebrow { display: block; margin-bottom: 12px; color: var(--clay); font: 700 12px/1.4 var(--heading); letter-spacing: .28em; text-transform: uppercase; }
+    .section-title { margin-bottom: 22px; font-size: clamp(30px, 4vw, 44px); line-height: 1.35; letter-spacing: .16em; }
+    .section-lead { max-width: 680px; color: var(--muted); font-size: 16px; }
+    .announcement { padding: 7px 16px; background: #5b738e; color: #f5f3ef; text-align: center; font-size: 12px; letter-spacing: .14em; }
+    .nav { position: sticky; top: 0; z-index: 30; border-bottom: 1px solid var(--line); background: color-mix(in srgb, var(--paper) 90%, transparent); backdrop-filter: blur(14px); }
+    .nav-inner { min-height: 80px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
+    .brand-mark { width: 48px; height: 48px; flex: 0 0 auto; }
+    .brand-name { display: block; font: 800 19px/1.25 var(--heading); letter-spacing: .14em; }
+    .brand-en { display: block; color: var(--muted); font-size: 10px; letter-spacing: .17em; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 26px; }
+    .nav-links a { color: var(--muted); font-size: 14px; text-decoration: none; }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+    .btn { min-height: 46px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 12px 24px; border: 1px solid var(--blue); border-radius: 2px; background: var(--blue); color: #f5f3ef; font: 700 12px/1.3 var(--heading); letter-spacing: .14em; text-decoration: none; transition: background .2s ease, border-color .2s ease, transform .2s ease; }
+    .btn:hover { background: var(--blue-dark); border-color: var(--blue-dark); transform: translateY(-1px); }
+    .btn-outline { background: transparent; color: var(--ink); border-color: var(--line); }
+    .btn-outline:hover { background: var(--surface); color: var(--blue); border-color: var(--blue); }
+    .btn-line { background: #06c755; border-color: #06c755; color: white; }
+    .theme-btn { min-height: 40px; padding: 7px 10px; border: 1px solid var(--line); background: transparent; color: var(--ink); border-radius: 2px; font: 700 11px/1 var(--heading); }
+    .menu-btn { display: none; width: 42px; height: 42px; padding: 10px; border: 1px solid var(--line); background: transparent; color: var(--ink); }
+    .menu-btn svg { width: 100%; height: 100%; }
+    .mobile-menu { display: none; padding: 0 20px 20px; }
+    .mobile-menu.open { display: grid; gap: 4px; }
+    .mobile-menu a { padding: 12px 0; border-bottom: 1px solid var(--line); color: var(--muted); text-decoration: none; }
+    .hero { min-height: calc(100vh - 110px); display: flex; align-items: center; padding: 80px 0; border-bottom: 1px solid var(--line); }
+    .hero-grid { display: grid; grid-template-columns: 1.25fr .75fr; gap: clamp(46px, 7vw, 90px); align-items: center; }
+    .hero-label { display: inline-flex; align-items: center; gap: 9px; margin-bottom: 28px; padding: 7px 11px; border: 1px solid var(--line); color: var(--blue); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; }
+    .hero-label::before { content: ""; width: 6px; height: 6px; background: var(--blue); }
+    .hero h1 { margin-bottom: 28px; font-size: clamp(42px, 6vw, 72px); line-height: 1.2; letter-spacing: .14em; }
+    .hero h1 span { color: var(--blue); }
+    .hero-copy { max-width: 650px; margin-bottom: 34px; color: var(--muted); font-size: clamp(16px, 2vw, 19px); line-height: 2; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+    .hero-proof { display: grid; grid-template-columns: repeat(3, 1fr); max-width: 560px; margin-top: 52px; padding-top: 26px; border-top: 1px solid var(--line); gap: 20px; }
+    .hero-proof strong { display: block; font: 800 21px/1.2 var(--heading); }
+    .hero-proof span { color: var(--muted); font-size: 12px; }
+    .hero-media { position: relative; padding: 12px; border: 1px solid var(--line); background: var(--surface); }
+    .hero-media img { width: 100%; height: min(65vh, 610px); min-height: 480px; object-fit: cover; }
+    .hero-caption { position: absolute; inset: auto 12px 12px; padding: 15px 17px; background: color-mix(in srgb, var(--paper) 94%, transparent); border-top: 1px solid var(--line); }
+    .hero-caption small { display: block; color: var(--clay); font: 700 10px/1.4 var(--heading); letter-spacing: .17em; }
+    .hero-caption strong { font: 700 13px/1.5 var(--heading); letter-spacing: .1em; }
+    .philosophy { max-width: 860px; margin: 0 auto 48px; text-align: center; }
+    .philosophy blockquote { margin: 0; color: var(--ink); font-size: clamp(17px, 2.4vw, 22px); line-height: 2; }
+    .values { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--line); background: color-mix(in srgb, var(--paper) 86%, transparent); }
+    .value { padding: 34px; }
+    .value + .value { border-left: 1px solid var(--line); }
+    .value b { display: block; margin-bottom: 10px; color: var(--clay); font: 700 12px/1 var(--heading); }
+    .value h3 { font-size: 19px; letter-spacing: .12em; }
+    .value p { margin: 0; color: var(--muted); font-size: 14px; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 48px; }
+    .section-head .section-lead { max-width: 480px; }
+    .services { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .service { display: flex; flex-direction: column; padding: 18px; border: 1px solid var(--line); background: color-mix(in srgb, var(--paper) 92%, transparent); }
+    .service img { width: 100%; height: 220px; margin-bottom: 22px; object-fit: cover; }
+    .service h3 { margin-bottom: 10px; font-size: 18px; letter-spacing: .11em; }
+    .service p { flex: 1; color: var(--muted); font-size: 13px; }
+    .service .btn { width: 100%; margin-top: 12px; }
+    .portfolio-note { margin: -28px auto 36px; max-width: 760px; color: var(--muted); text-align: center; font-size: 13px; }
+    .filters { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 36px; }
+    .filter { padding: 9px 16px; border: 1px solid var(--line); background: var(--paper); color: var(--muted); font: 700 12px/1.4 var(--heading); }
+    .filter.active { background: var(--blue); border-color: var(--blue); color: #f5f3ef; }
+    .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .work { overflow: hidden; border: 1px solid var(--line); background: var(--paper); }
+    .work img { width: 100%; height: 360px; object-fit: cover; }
+    .work-copy { padding: 18px 20px; }
+    .work-copy small { display: block; margin-bottom: 4px; color: var(--clay); font: 700 10px/1.4 var(--heading); letter-spacing: .12em; }
+    .work-copy h3 { margin: 0; font-size: 15px; letter-spacing: .08em; }
+    .process { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .step { padding: 34px 26px; }
+    .step + .step { border-left: 1px solid var(--line); }
+    .step span { display: block; margin-bottom: 18px; color: var(--clay); font: 800 26px/1 var(--heading); }
+    .step h3 { font-size: 17px; letter-spacing: .1em; }
+    .step p { margin-bottom: 0; color: var(--muted); font-size: 13px; }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 34px; align-items: start; }
+    .info-panel { padding: 34px; border: 1px solid var(--line); background: var(--surface); }
+    .info-list { margin: 0; padding: 0; list-style: none; }
+    .info-list li { padding: 14px 0; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+    .info-list li:last-child { border-bottom: 0; }
+    details { border-bottom: 1px solid var(--line); }
+    summary { padding: 18px 0; cursor: pointer; color: var(--ink); font: 700 15px/1.6 var(--heading); letter-spacing: .07em; }
+    details p { padding: 0 0 18px; color: var(--muted); font-size: 14px; }
+    .contact { text-align: center; }
+    .contact .section-lead { margin-inline: auto; }
+    .contact-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 30px; }
+    footer { padding: 64px 0 48px; border-top: 1px solid rgba(245,243,239,.1); background: #2b3540; color: #f5f3ef; }
+    .footer-original-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 32px; border-top: 1px solid rgba(245,243,239,.1); color: rgba(245,243,239,.5); font-size: 12px; font-weight: 300; }
+    .footer-original-row p { margin: 0; }
+    .footer-credit { text-align: right; }
+    .footer-admin-link { display: inline-block; margin-left: .35em; color: rgba(245,243,239,.72); font-weight: 500; text-underline-offset: 4px; transition: color .2s ease; }
+    .footer-admin-link:hover { color: var(--clay); }
+    .modal { position: fixed; inset: 0; z-index: 60; display: flex; align-items: center; justify-content: center; padding: 18px; background: rgba(24,31,38,.78); backdrop-filter: blur(6px); }
+    .modal.hidden { display: none; }
+    .modal-panel { width: min(720px, 100%); max-height: 92vh; overflow-y: auto; border: 1px solid var(--line); background: var(--paper); box-shadow: var(--shadow); }
+    .modal-head { position: sticky; top: 0; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 22px 26px; border-bottom: 1px solid var(--line); background: var(--paper); }
+    .modal-head h2 { margin: 0; font-size: 23px; letter-spacing: .12em; }
+    .close-btn { width: 40px; height: 40px; flex: 0 0 auto; border: 1px solid var(--line); background: transparent; color: var(--ink); font-size: 22px; line-height: 1; }
+    .booking-form { display: grid; gap: 22px; padding: 26px; }
+    fieldset { min-width: 0; margin: 0; padding: 0; border: 0; }
+    legend, label { display: block; margin-bottom: 7px; color: var(--ink); font: 700 13px/1.6 var(--heading); letter-spacing: .05em; }
+    .required { color: var(--clay); }
+    .service-options { display: grid; grid-template-columns: repeat(2, 1fr); gap: 9px; }
+    .service-choice { position: relative; margin: 0; }
+    .service-choice input { position: absolute; opacity: 0; }
+    .service-choice span { display: block; padding: 11px 12px; border: 1px solid var(--line); color: var(--muted); text-align: center; font: 700 12px/1.5 var(--heading); }
+    .service-choice input:checked + span { border-color: var(--clay); background: color-mix(in srgb, var(--clay) 10%, transparent); color: var(--clay); }
+    .service-choice input:focus-visible + span { outline: 3px solid var(--clay); outline-offset: 2px; }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    input, select, textarea { width: 100%; padding: 12px 13px; border: 1px solid var(--line); border-radius: 0; background: color-mix(in srgb, var(--paper) 90%, white 10%); color: var(--ink); font-size: 14px; }
+    textarea { resize: vertical; }
+    .consent { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: start; margin: 0; color: var(--muted); font: 400 12px/1.7 var(--body); }
+    .consent input { width: 18px; height: 18px; margin-top: 3px; }
+    .form-note { margin: 0; color: var(--muted); font-size: 12px; }
+    .form-status { min-height: 24px; margin: 0; color: #a33e3e; font-size: 13px; }
+    .honeypot { position: absolute !important; left: -10000px !important; width: 1px !important; height: 1px !important; overflow: hidden !important; }
+    .success { padding: 42px 28px; text-align: center; }
+    .success.hidden { display: none; }
+    .success-mark { width: 58px; height: 58px; display: grid; place-items: center; margin: 0 auto 20px; border: 1px solid #2c8d66; border-radius: 50%; color: #2c8d66; font: 800 25px/1 var(--heading); }
+    .success h3 { font-size: 26px; letter-spacing: .12em; }
+    .success p { color: var(--muted); }
+    .ref-code { display: inline-block; margin: 12px 0 24px; padding: 10px 14px; background: var(--surface); color: var(--clay); font: 700 13px/1.4 monospace; }
+    .success-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+    .admin-entry { position: fixed; right: 22px; bottom: 22px; z-index: 45; width: 54px; height: 54px; display: grid; place-items: center; padding: 0; border: 1px solid rgba(245,243,239,.45); border-radius: 50%; background: var(--blue-dark); color: #f5f3ef; box-shadow: 0 12px 32px rgba(43,53,64,.3); }
+    .admin-entry:hover { transform: translateY(-2px); background: var(--blue); }
+    .admin-entry svg { width: 22px; height: 22px; }
+    .admin-toolbar { position: fixed; left: 50%; bottom: 18px; z-index: 46; width: min(620px, calc(100% - 104px)); display: flex; align-items: center; gap: 10px; padding: 10px; border: 1px solid var(--line); background: color-mix(in srgb, var(--paper) 96%, transparent); box-shadow: var(--shadow); backdrop-filter: blur(14px); }
+    .admin-toolbar.hidden { display: none; }
+    .admin-toolbar .btn { min-height: 40px; padding: 9px 16px; }
+    .admin-status { flex: 1; margin: 0; color: var(--muted); font-size: 12px; }
+    .admin-editing [data-edit-key] { outline: 1px dashed color-mix(in srgb, var(--clay) 70%, transparent); outline-offset: 4px; cursor: text; }
+    .admin-editing [data-edit-key]:focus { outline: 2px solid var(--clay); background: color-mix(in srgb, var(--clay) 8%, transparent); }
+    .image-slot { position: relative; }
+    .image-edit-button { position: absolute; z-index: 4; top: 12px; right: 12px; display: none; min-height: 38px; padding: 8px 12px; border: 1px solid rgba(255,255,255,.55); background: rgba(43,53,64,.9); color: white; font: 700 11px/1.2 var(--heading); letter-spacing: .08em; }
+    .admin-editing .image-edit-button { display: inline-flex; align-items: center; gap: 6px; }
+    .service .image-slot { margin-bottom: 22px; }
+    .service .image-slot img { margin-bottom: 0; }
+    .work .image-slot img { width: 100%; }
+    .admin-login-panel { width: min(440px, 100%); }
+    .admin-login-form { display: grid; gap: 18px; padding: 26px; }
+    .admin-login-form .btn { width: 100%; }
+    .admin-help { margin: 0; color: var(--muted); font-size: 12px; }
+    #adminImageInput { position: fixed; left: -10000px; width: 1px; height: 1px; opacity: 0; }
+    @media (max-width: 980px) {
+      .nav-links, .nav-actions .btn { display: none; }
+      .menu-btn { display: block; }
+      .hero-grid { grid-template-columns: 1fr 1fr; gap: 34px; }
+      .services { grid-template-columns: repeat(2, 1fr); }
+      .process { grid-template-columns: repeat(2, 1fr); }
+      .step:nth-child(3) { border-left: 0; border-top: 1px solid var(--line); }
+      .step:nth-child(4) { border-top: 1px solid var(--line); }
+    }
+    @media (max-width: 720px) {
+      .container { width: min(100% - 32px, 1180px); }
+      .section { padding: 76px 0; }
+      .announcement { font-size: 10px; }
+      .nav-inner { min-height: 70px; }
+      .brand-mark { width: 42px; height: 42px; }
+      .brand-name { font-size: 17px; }
+      .hero { padding: 62px 0 72px; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: clamp(38px, 12vw, 54px); }
+      .hero-proof { gap: 12px; }
+      .hero-proof strong { font-size: 17px; }
+      .hero-media img { min-height: 420px; height: 68vh; }
+      .values, .services, .portfolio-grid, .info-grid { grid-template-columns: 1fr; }
+      .value + .value { border-left: 0; border-top: 1px solid var(--line); }
+      .section-head { display: block; }
+      .section-head .section-lead { margin-top: 20px; }
+      .portfolio-grid { gap: 18px; }
+      .service img, .work img { height: 300px; }
+      .process { grid-template-columns: 1fr; }
+      .step + .step, .step:nth-child(3) { border-left: 0; border-top: 1px solid var(--line); }
+      .footer-original-row { flex-direction: column; text-align: center; }
+      .footer-credit { text-align: center; }
+      .field-row, .service-options { grid-template-columns: 1fr; }
+      .modal { padding: 0; align-items: stretch; }
+      .modal-panel { max-height: 100vh; width: 100%; }
+      .success-actions .btn { width: 100%; }
+      .admin-entry { right: 14px; bottom: 14px; width: 50px; height: 50px; }
+      .admin-toolbar { left: 12px; right: 76px; bottom: 12px; width: auto; flex-wrap: wrap; transform: none; }
+      .admin-status { flex-basis: 100%; order: -1; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要內容</a>
+  <div class="announcement" data-edit-key="announcement">季節空間花藝、婚禮花藝與客製花禮開放預約諮詢</div>
+
+  <nav class="nav" aria-label="主要導覽">
+    <div class="container nav-inner">
+      <a class="brand" href="#top" aria-label="默藍花藝首頁">
+        <svg class="brand-mark" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+          <circle cx="100" cy="100" r="95" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="100" cy="100" r="89" stroke="currentColor" stroke-width=".8"/>
+          <text x="56" y="106" font-family="sans-serif" font-weight="800" font-size="38" fill="currentColor" text-anchor="middle">默</text>
+          <text x="144" y="106" font-family="sans-serif" font-weight="800" font-size="38" fill="currentColor" text-anchor="middle">藍</text>
+          <path d="M100 111Q98 90 95 72Q100 60 108 50M95 72Q105 66 112 70" stroke="#b38a7d" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M108 50Q102 42 98 48Q92 44 94 38Q102 34 108 42Q114 36 116 42Q118 48 108 50Z" fill="#b38a7d" fill-opacity=".3" stroke="#b38a7d"/>
+          <text x="100" y="132" font-family="serif" font-size="10" fill="currentColor" text-anchor="middle" letter-spacing="1.6">MORAN FLORAL STUDIO</text>
+          <line x1="50" y1="140" x2="150" y2="140" stroke="#b38a7d" stroke-width=".8"/>
+          <text x="100" y="158" font-family="serif" font-size="10" fill="currentColor" text-anchor="middle" letter-spacing="3">花藝・設計</text>
+        </svg>
+        <span><span class="brand-name">默藍花藝</span><span class="brand-en">Moran Floral Studio</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="#philosophy">品牌理念</a><a href="#services">核心服務</a><a href="#portfolio">風格作品</a><a href="#process">預約流程</a><a href="#faq">常見問題</a>
+      </div>
+      <div class="nav-actions">
+        <button class="theme-btn" type="button" data-theme-toggle aria-label="切換深色或淺色模式">深色模式</button>
+        <button class="btn" type="button" data-open-booking>預約專屬諮詢</button>
+        <button class="menu-btn" type="button" aria-controls="mobileMenu" aria-expanded="false" aria-label="開啟導覽選單">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="mobile-menu container">
+      <a href="#philosophy">品牌理念</a><a href="#services">核心服務</a><a href="#portfolio">風格作品</a><a href="#process">預約流程</a><a href="#faq">常見問題</a>
+      <button class="btn" type="button" data-open-booking>預約專屬諮詢</button>
+    </div>
+  </nav>
+
+  <main id="main">
+    <section id="top" class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="hero-label">Moran Floral Studio · Wabi-Sabi Aesthetics</div>
+          <h1><span data-edit-key="heroLine1">把花開的瞬間</span><br><span data-edit-key="heroLine2">留在日常裡</span></h1>
+          <p class="hero-copy" data-edit-key="heroCopy">順應花材與枝葉的自然姿態，為婚禮、商業場域、贈禮與日常空間，整理出安靜且有層次的花藝風景。</p>
+          <div class="hero-actions">
+            <button class="btn" type="button" data-open-booking>預約花藝諮詢</button>
+            <a class="btn btn-outline" href="#portfolio">瀏覽風格作品</a>
+          </div>
+          <div class="hero-proof" aria-label="服務特色">
+            <div><strong>依季節</strong><span>花材彈性提案</span></div>
+            <div><strong>四類</strong><span>花藝服務方向</span></div>
+            <div><strong>一對一</strong><span>需求與預算討論</span></div>
+          </div>
+        </div>
+        <figure class="hero-media image-slot">
+          <img data-image-key="heroImage" src="/assets/images/hero/hero-main-v1.webp" width="900" height="1200" alt="粉白色花藝展示作品" fetchpriority="high" decoding="async">
+          <button class="image-edit-button" type="button" data-replace-image="heroImage">更換照片</button>
+          <figcaption class="hero-caption"><small>MORAN FLORAL STYLE</small><strong data-edit-key="heroCaption">光影、留白與自然線條</strong></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="philosophy" class="section section-alt">
+      <div class="container">
+        <div class="philosophy"><span class="eyebrow">Brand Philosophy</span><h2 class="section-title" data-edit-key="philosophyTitle">尋常之物，亦有詩意</h2><blockquote data-edit-key="philosophyQuote">花藝不只在盛放時成立，也存在於枝葉的舒展、器皿與空間的留白。默藍以克制的色彩與自然線條，陪每一份委託找到適合自己的節奏。</blockquote></div>
+        <div class="values">
+          <article class="value"><b>01</b><h3 data-edit-key="valueTitle1">順應花材</h3><p data-edit-key="valueBody1">以季節可取得的花材為基礎，保留自然姿態；如遇缺花，先以相近色系與質感討論替代方案。</p></article>
+          <article class="value"><b>02</b><h3 data-edit-key="valueTitle2">回應空間</h3><p data-edit-key="valueBody2">從尺寸、光線、動線與觀看距離出發，避免只看單一作品而忽略實際場域。</p></article>
+          <article class="value"><b>03</b><h3 data-edit-key="valueTitle3">尊重委託</h3><p data-edit-key="valueBody3">在製作前確認用途、預算、日期與偏好，讓設計期待與可執行範圍保持一致。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="section">
+      <div class="container">
+        <div class="section-head"><div><span class="eyebrow">Core Services</span><h2 class="section-title" data-edit-key="servicesTitle">核心服務</h2></div><p class="section-lead" data-edit-key="servicesLead">下列內容是諮詢方向，不是固定套裝。實際花材、尺寸、交付方式與報價，會依需求逐案確認。</p></div>
+        <div class="services">
+          <article class="service"><div class="image-slot"><img data-image-key="serviceSpace" src="/assets/images/service/service-space-v1.webp" width="800" height="600" loading="lazy" decoding="async" alt="金色圓框與花材構成的空間花藝"><button class="image-edit-button" type="button" data-replace-image="serviceSpace">更換照片</button></div><h3 data-edit-key="serviceTitle1">空間花藝陳列</h3><p data-edit-key="serviceBody1">商業場域、迎賓區或居家空間的花藝配置，依現場條件與維護需求討論。</p><button class="btn btn-outline" type="button" data-service="空間花藝陳列">諮詢空間花藝</button></article>
+          <article class="service"><div class="image-slot"><img data-image-key="serviceWedding" src="/assets/images/service/service-wedding-v1.webp" width="800" height="600" loading="lazy" decoding="async" alt="婚禮迎賓區大型花藝佈置"><button class="image-edit-button" type="button" data-replace-image="serviceWedding">更換照片</button></div><h3 data-edit-key="serviceTitle2">婚禮花藝設計</h3><p data-edit-key="serviceBody2">從捧花、胸花到儀式與迎賓區佈置，依場地、主題與預算確認製作範圍。</p><button class="btn btn-outline" type="button" data-service="婚禮花藝設計">諮詢婚禮花藝</button></article>
+          <article class="service"><div class="image-slot"><img data-image-key="serviceGift" src="/assets/images/service/service-gift-v1.webp" width="600" height="800" loading="lazy" decoding="async" alt="藍白色系客製花禮"><button class="image-edit-button" type="button" data-replace-image="serviceGift">更換照片</button></div><h3 data-edit-key="serviceTitle3">客製花禮訂製</h3><p data-edit-key="serviceBody3">生日、紀念、祝福與企業贈禮，可從色系、心意、尺寸與預算開始討論。</p><button class="btn btn-outline" type="button" data-service="客製花禮訂製">諮詢客製花禮</button></article>
+          <article class="service"><div class="image-slot"><img data-image-key="serviceWorkshop" src="/assets/images/service/service-workshop-v1.webp" width="800" height="640" loading="lazy" decoding="async" alt="花藝工作坊學員製作花禮"><button class="image-edit-button" type="button" data-replace-image="serviceWorkshop">更換照片</button></div><h3 data-edit-key="serviceTitle4">實體花藝課程</h3><p data-edit-key="serviceBody4">課程內容、材料與開課日期依當期公告；可先留下希望學習的主題與人數。</p><button class="btn btn-outline" type="button" data-service="實體花藝課程">詢問課程資訊</button></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="portfolio" class="section section-alt">
+      <div class="container">
+        <div class="philosophy"><span class="eyebrow">Style Portfolio</span><h2 class="section-title" data-edit-key="portfolioTitle">風格作品參考</h2><p class="section-lead" data-edit-key="portfolioLead">用現有作品說明色彩、構圖與服務方向。</p></div>
+        <p class="portfolio-note" data-edit-key="portfolioNote">以下圖片作為風格與品項參考，不代表特定客戶案例或固定可複製成品；花材會依季節、供應與實際委託內容調整。</p>
+        <div class="filters" aria-label="作品分類">
+          <button class="filter active" type="button" data-filter="all" aria-pressed="true">全部</button><button class="filter" type="button" data-filter="space" aria-pressed="false">空間花藝</button><button class="filter" type="button" data-filter="wedding" aria-pressed="false">婚禮花藝</button><button class="filter" type="button" data-filter="gift" aria-pressed="false">客製花禮</button>
+        </div>
+        <div id="portfolioGrid" class="portfolio-grid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section id="process" class="section">
+      <div class="container">
+        <div class="section-head"><div><span class="eyebrow">Booking Process</span><h2 class="section-title" data-edit-key="processTitle">預約與製作流程</h2></div><p class="section-lead" data-edit-key="processLead">先把需求說清楚，再進入設計與製作。每一階段的範圍、費用與日期都應以雙方確認內容為準。</p></div>
+        <div class="process">
+          <article class="step"><span>01</span><h3 data-edit-key="stepTitle1">留下需求</h3><p data-edit-key="stepBody1">提供服務類型、日期、地點、預算、聯絡方式與風格備註。</p></article>
+          <article class="step"><span>02</span><h3 data-edit-key="stepTitle2">確認可行性</h3><p data-edit-key="stepBody2">團隊依檔期、花材、尺寸與執行條件回覆是否承接及需要補充的資料。</p></article>
+          <article class="step"><span>03</span><h3 data-edit-key="stepTitle3">提案與報價</h3><p data-edit-key="stepBody3">確認設計方向、交付內容、費用、付款節點，以及變更或取消條件。</p></article>
+          <article class="step"><span>04</span><h3 data-edit-key="stepTitle4">製作與交付</h3><p data-edit-key="stepBody4">依確認內容進行製作；交付或進場方式以個別案件約定為準。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="section section-alt">
+      <div class="container info-grid">
+        <div class="info-panel"><span class="eyebrow">Service Notes</span><h2 class="section-title" data-edit-key="serviceNotesTitle">諮詢前先知道</h2><ul class="info-list"><li><strong>預算：</strong>表單提供四個常見區間，正式費用仍依花材、尺寸與執行範圍報價。</li><li><strong>地區：</strong>請在表單填寫縣市與場地；是否可配送或進場，會依個案確認。</li><li><strong>花材：</strong>季節與供應會影響品項，替代花材以相近色系、質感與預算為原則討論。</li><li><strong>時間：</strong>越接近需求日期，可選花材與調整空間越有限；急件請直接透過 LINE 詢問。</li></ul></div>
+        <div><span class="eyebrow">FAQ</span><h2 class="section-title" data-edit-key="faqTitle">常見問題</h2>
+          <details><summary data-edit-key="faqQuestion1">需要提前多久詢問？</summary><p data-edit-key="faqAnswer1">不同服務需要的準備時間不同。請先填寫希望日期，團隊會依檔期與製作規模判斷；大型空間或婚禮專案建議儘早詢問。</p></details>
+          <details><summary data-edit-key="faqQuestion2">可以指定與照片完全一樣嗎？</summary><p data-edit-key="faqAnswer2">照片可用來溝通色系、氛圍與構圖，但自然花材會受季節、產地與批次影響，因此不承諾完全複製。</p></details>
+          <details><summary data-edit-key="faqQuestion3">價格是否就是表單中的預算區間？</summary><p data-edit-key="faqAnswer3">預算區間用來協助初步判斷，不是固定售價。正式報價會列出已確認的製作與交付範圍。</p></details>
+          <details><summary data-edit-key="faqQuestion4">送出表單後可以修改嗎？</summary><p data-edit-key="faqAnswer4">尚未確認報價前可補充需求；進入備料或製作後的變更與取消，則依雙方確認的案件條件處理。</p></details>
+          <details><summary data-edit-key="faqQuestion5">個人資料會如何使用？</summary><p data-edit-key="faqAnswer5">表單中的姓名、電話、LINE ID 與案件資訊，只用於本次諮詢、聯絡與後續服務；請不要填入身分證、金融帳號等不必要的敏感資料。</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact">
+      <div class="container"><span class="eyebrow">Start a Conversation</span><h2 class="section-title" data-edit-key="contactTitle">從一段需求，開始一束花</h2><p class="section-lead" data-edit-key="contactCopy">可使用官網表單整理需求，或直接加入 LINE 官方帳號 @474xknil。送出表單成功後，畫面會顯示諮詢單號；若傳送失敗，不會顯示假成功。</p><div class="contact-actions"><button class="btn" type="button" data-open-booking>填寫預約表單</button><a class="btn btn-line" href="https://line.me/R/ti/p/%40474xknil" target="_blank" rel="noopener noreferrer">加入 LINE 官方帳號</a></div></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-original-row">
+      <p data-edit-key="footerCopyright">© 2026 默藍花藝設計 Moran Floral Studio. All Rights Reserved.</p>
+      <p class="footer-credit"><span data-edit-key="footerCreditPrefix">設計與規劃由</span><a id="footerAdminLink" class="footer-admin-link" href="#admin-login" aria-label="莫珩管理團隊：進入網站管理模式">莫珩</a><span data-edit-key="footerCreditSuffix">管理團隊 極致打造</span></p>
+    </div>
+  </footer>
+
+  <div id="bookingModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="bookingTitle" aria-describedby="bookingDescription">
+    <div class="modal-panel" tabindex="-1">
+      <div class="modal-head"><div><span class="eyebrow">Booking Inquiry</span><h2 id="bookingTitle">預約花藝諮詢</h2></div><button id="closeBooking" class="close-btn" type="button" aria-label="關閉預約表單">×</button></div>
+      <form id="bookingForm" class="booking-form">
+        <p id="bookingDescription" class="form-note">送出後系統會等待伺服器確認；成功才會建立諮詢單號。標示 <span class="required">*</span> 為必填。</p>
+        <fieldset><legend>服務項目 <span class="required">*</span></legend><div class="service-options">
+          <label class="service-choice"><input type="radio" name="serviceType" value="空間花藝陳列" checked><span>空間花藝陳列</span></label>
+          <label class="service-choice"><input type="radio" name="serviceType" value="婚禮花藝設計"><span>婚禮花藝設計</span></label>
+          <label class="service-choice"><input type="radio" name="serviceType" value="客製花禮訂製"><span>客製花禮訂製</span></label>
+          <label class="service-choice"><input type="radio" name="serviceType" value="實體花藝課程"><span>實體花藝課程</span></label>
+        </div></fieldset>
+        <div class="field-row"><div><label for="bookingDate">預計需求日期 <span class="required">*</span></label><input id="bookingDate" name="date" type="date" required></div><div><label for="bookingLocation">活動地點／縣市</label><input id="bookingLocation" name="location" type="text" maxlength="80" autocomplete="address-level1" placeholder="例如：台北市大安區"></div></div>
+        <div><label for="bookingBudget">預算規劃區間 <span class="required">*</span></label><select id="bookingBudget" name="budget" required><option value="NT$ 3,000 以下">NT$ 3,000 以下</option><option value="NT$ 3,000 - 15,000" selected>NT$ 3,000 - 15,000</option><option value="NT$ 15,000 - 35,000">NT$ 15,000 - 35,000</option><option value="NT$ 35,000 以上">NT$ 35,000 以上</option></select></div>
+        <div class="field-row"><div><label for="bookingName">姓名／稱呼 <span class="required">*</span></label><input id="bookingName" name="name" type="text" maxlength="50" autocomplete="name" required></div><div><label for="bookingPhone">聯絡電話 <span class="required">*</span></label><input id="bookingPhone" name="phone" type="tel" maxlength="30" inputmode="tel" autocomplete="tel" placeholder="0912-345-678" required></div></div>
+        <div><label for="bookingLineId">LINE ID（選填）</label><input id="bookingLineId" name="lineId" type="text" maxlength="50" autocomplete="off" placeholder="方便後續圖文討論"></div>
+        <div><label for="bookingRemarks">需求與風格備註</label><textarea id="bookingRemarks" name="remarks" rows="4" maxlength="1000" placeholder="用途、尺寸、色系、喜歡或不喜歡的方向"></textarea></div>
+        <div class="honeypot" aria-hidden="true"><label for="bookingWebsite">網站</label><input id="bookingWebsite" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+        <label class="consent"><input name="privacyConsent" type="checkbox" required><span>我同意默藍花藝使用本表單資料聯絡本次諮詢；我不會填入與本案無關的敏感個資。 <span class="required">*</span></span></label>
+        <p id="formStatus" class="form-status" role="status" aria-live="polite" tabindex="-1"></p>
+        <button id="submitBooking" class="btn" type="submit">送出並等待確認</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="successModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="successTitle" aria-describedby="successDescription">
+    <div class="modal-panel admin-login-panel success" tabindex="-1">
+      <div class="success-mark" aria-hidden="true">✓</div><h2 id="successTitle">諮詢單已成功送出</h2><p id="successDescription">伺服器已確認收到資料。團隊會依案件內容與檔期後續聯絡。</p><div id="bookingRef" class="ref-code"></div><div class="success-actions"><button id="closeSuccess" class="btn" type="button">完成</button></div>
+    </div>
+  </div>
+
+  <button id="adminEntry" class="admin-entry" type="button" aria-label="進入網站編輯模式" title="網站編輯模式">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4Z"/></svg>
+  </button>
+
+  <div id="adminLoginModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="adminLoginTitle" aria-describedby="adminLoginHelp">
+    <div class="modal-panel admin-login-panel" tabindex="-1">
+      <div class="modal-head"><div><span class="eyebrow">Website Editor</span><h2 id="adminLoginTitle">管理員登入</h2></div><button id="closeAdminLogin" class="close-btn" type="button" aria-label="關閉管理員登入">×</button></div>
+      <form id="adminLoginForm" class="admin-login-form">
+        <p id="adminLoginHelp" class="admin-help">登入後可直接修改文字與更換照片。帳號密碼只會送到本站管理端。</p>
+        <div><label for="adminUsername">管理帳號</label><input id="adminUsername" name="username" type="text" autocomplete="username" required></div>
+        <div><label for="adminPassword">管理密碼</label><input id="adminPassword" name="password" type="password" autocomplete="current-password" required></div>
+        <p id="adminLoginStatus" class="form-status" role="status" aria-live="polite"></p>
+        <button id="adminLoginSubmit" class="btn" type="submit">登入並開始編輯</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="adminToolbar" class="admin-toolbar hidden" role="region" aria-label="網站編輯工具列">
+    <p id="adminStatus" class="admin-status" role="status" aria-live="polite">編輯模式已開啟；點選文字修改，或按照片上的「更換照片」。</p>
+    <button id="adminSave" class="btn" type="button">儲存變更</button>
+    <button id="adminExit" class="btn btn-outline" type="button">結束編輯</button>
+    <button id="adminLogout" class="btn btn-outline" type="button">登出</button>
+  </div>
+  <input id="adminImageInput" type="file" accept="image/jpeg,image/png,image/webp" tabindex="-1" hidden>
+
+  <script>
+    const portfolioItems = [
+      { category: 'space', title: '粉白立體花藝與留白', titleKey: 'portfolioItemTitle1', tag: '空間花藝風格參考', image: '/assets/images/portfolio/port-space-1-v1.webp', imageKey: 'portfolioImage1', width: 750, height: 1000, alt: '粉白色大型桌上花藝' },
+      { category: 'space', title: '金色圓框節慶花藝', titleKey: 'portfolioItemTitle2', tag: '空間花藝風格參考', image: '/assets/images/portfolio/port-space-2-v1.webp', imageKey: 'portfolioImage2', width: 1000, height: 750, alt: '金色圓框與花材組成的掛飾' },
+      { category: 'wedding', title: '迎賓區大型花藝', titleKey: 'portfolioItemTitle3', tag: '婚禮花藝風格參考', image: '/assets/images/portfolio/port-wedding-1-v1.webp', imageKey: 'portfolioImage3', width: 1000, height: 750, alt: '婚禮迎賓背板與大型花藝' },
+      { category: 'wedding', title: '粉色層次捧花', titleKey: 'portfolioItemTitle4', tag: '婚禮花藝風格參考', image: '/assets/images/portfolio/port-wedding-2-v1.webp', imageKey: 'portfolioImage4', width: 750, height: 1000, alt: '粉紅與白色層次花束' },
+      { category: 'gift', title: '莫蘭迪藍桌上花禮', titleKey: 'portfolioItemTitle5', tag: '客製花禮風格參考', image: '/assets/images/portfolio/port-gift-1-v1.webp', imageKey: 'portfolioImage5', width: 750, height: 1000, alt: '藍白色系桌上花禮' },
+      { category: 'gift', title: '祝福主題花束', titleKey: 'portfolioItemTitle6', tag: '客製花禮風格參考', image: '/assets/images/portfolio/port-gift-2-v1.webp', imageKey: 'portfolioImage6', width: 750, height: 1000, alt: '白色包裝的祝福主題花束' },
+      { category: 'gift', title: '多品項花禮陳列', titleKey: 'portfolioItemTitle7', tag: '客製花禮風格參考', image: '/assets/images/portfolio/port-gift-3-v1.webp', imageKey: 'portfolioImage7', width: 1000, height: 750, alt: '多款粉藍色系花禮陳列' }
+    ];
+    const bookingModal = document.getElementById('bookingModal');
+    const successModal = document.getElementById('successModal');
+    const adminLoginModal = document.getElementById('adminLoginModal');
+    const form = document.getElementById('bookingForm');
+    const formStatus = document.getElementById('formStatus');
+    const submitButton = document.getElementById('submitBooking');
+    const menuButton = document.querySelector('.menu-btn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const adminToolbar = document.getElementById('adminToolbar');
+    const adminStatus = document.getElementById('adminStatus');
+    const adminImageInput = document.getElementById('adminImageInput');
+    const contentState = { text: {}, images: {} };
+    let activeFilter = 'all';
+    let bookingOpenedAt = 0;
+    let returnFocus = null;
+    let activeModal = null;
+    let adminAuthenticated = false;
+    let adminEditing = false;
+    let adminDirty = false;
+    let currentImageKey = '';
+
+    const escapeHtml = value => String(value).replace(/[&<>'"]/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[character]);
+
+    function renderPortfolio(filter = activeFilter) {
+      activeFilter = filter;
+      const items = filter === 'all' ? portfolioItems : portfolioItems.filter(item => item.category === filter);
+      document.getElementById('portfolioGrid').innerHTML = items.map(item => {
+        const image = contentState.images[item.imageKey] || item.image;
+        const title = Object.hasOwn(contentState.text, item.titleKey) ? contentState.text[item.titleKey] : item.title;
+        return `<article class="work"><div class="image-slot"><img data-image-key="${item.imageKey}" src="${escapeHtml(image)}" width="${item.width}" height="${item.height}" loading="lazy" decoding="async" alt="${escapeHtml(item.alt)}"><button class="image-edit-button" type="button" data-replace-image="${item.imageKey}">更換照片</button></div><div class="work-copy"><small>${item.tag}</small><h3 data-edit-key="${item.titleKey}"${adminEditing ? ' contenteditable="true"' : ''}>${escapeHtml(title)}</h3></div></article>`;
+      }).join('');
+    }
+
+    function applyContent(content) {
+      if (!content || typeof content !== 'object') return;
+      Object.assign(contentState.text, content.text || {});
+      Object.assign(contentState.images, content.images || {});
+      document.querySelectorAll('[data-edit-key]').forEach(element => {
+        const value = contentState.text[element.dataset.editKey];
+        if (typeof value === 'string') element.textContent = value;
+      });
+      document.querySelectorAll('[data-image-key]').forEach(image => {
+        const value = contentState.images[image.dataset.imageKey];
+        if (value) image.src = value;
+      });
+      renderPortfolio(activeFilter);
+    }
+
+    async function loadContent() {
+      for (const url of ['/assets/site-content.json', '/api/content']) {
+        try {
+          const response = await fetch(url, { headers: { Accept: 'application/json' } });
+          if (response.ok) {
+            const payload = await response.json();
+            applyContent(payload.content ?? payload);
+          }
+        } catch { /* Static hosting may not expose an API until configured. */ }
+      }
+    }
+
+    function setTheme(dark) {
+      document.documentElement.classList.toggle('dark', dark);
+      localStorage.setItem('moran_theme_mode', dark ? 'dark' : 'light');
+      document.querySelectorAll('[data-theme-toggle]').forEach(button => { button.textContent = dark ? '淺色模式' : '深色模式'; });
+    }
+
+    function showModal(modal, focusTarget = modal.querySelector('.modal-panel')) {
+      returnFocus = document.activeElement;
+      activeModal = modal;
+      modal.classList.remove('hidden');
+      document.body.classList.add('modal-open');
+      window.setTimeout(() => focusTarget?.focus(), 0);
+    }
+
+    function hideModal(modal, restoreFocus = true) {
+      modal.classList.add('hidden');
+      if (activeModal === modal) activeModal = null;
+      if (!document.querySelector('.modal:not(.hidden)')) document.body.classList.remove('modal-open');
+      if (restoreFocus && returnFocus?.focus) returnFocus.focus();
+    }
+
+    function openBooking(serviceName) {
+      bookingOpenedAt = Date.now();
+      formStatus.textContent = '';
+      if (serviceName) {
+        const radio = form.querySelector(`input[name="serviceType"][value="${CSS.escape(serviceName)}"]`);
+        if (radio) radio.checked = true;
+      }
+      showModal(bookingModal);
+    }
+
+    function focusableIn(modal) {
+      return [...modal.querySelectorAll('button:not([disabled]), a[href], input:not([disabled]):not([tabindex="-1"]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])')].filter(element => !element.closest('.hidden') && !element.hidden);
+    }
+
+    function setAdminDirty(message = '有尚未儲存的變更。') {
+      if (!adminEditing) return;
+      adminDirty = true;
+      adminStatus.textContent = message;
+    }
+
+    function setEditing(enabled) {
+      adminEditing = enabled;
+      document.body.classList.toggle('admin-editing', enabled);
+      adminToolbar.classList.toggle('hidden', !enabled);
+      document.querySelectorAll('[data-edit-key]').forEach(element => element.setAttribute('contenteditable', String(enabled)));
+      document.getElementById('adminEntry').setAttribute('aria-label', enabled ? '網站目前在編輯模式' : '進入網站編輯模式');
+      if (enabled) adminStatus.textContent = '編輯模式已開啟；點選文字修改，或按照片上的「更換照片」。';
+      renderPortfolio(activeFilter);
+    }
+
+    function collectContent() {
+      const text = { ...contentState.text };
+      document.querySelectorAll('[data-edit-key]').forEach(element => { text[element.dataset.editKey] = element.textContent.trim(); });
+      return { text, images: { ...contentState.images } };
+    }
+
+    async function requestJson(url, options = {}) {
+      const response = await fetch(url, { ...options, headers: { Accept: 'application/json', ...(options.headers || {}) } });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok || result.ok === false) throw new Error(result.message || `請求失敗（${response.status}）`);
+      return result;
+    }
+
+    async function openAdmin() {
+      if (adminEditing) return;
+      try {
+        const session = await requestJson('/api/admin/session');
+        adminAuthenticated = session.authenticated === true;
+      } catch { adminAuthenticated = false; }
+      if (adminAuthenticated) setEditing(true);
+      else {
+        document.getElementById('adminLoginStatus').textContent = '';
+        showModal(adminLoginModal, document.getElementById('adminUsername'));
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      renderPortfolio();
+      setTheme(localStorage.getItem('moran_theme_mode') === 'dark');
+      const today = new Date();
+      document.getElementById('bookingDate').min = new Date(today.getTime() - today.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+      await loadContent();
+    });
+
+    document.querySelectorAll('[data-theme-toggle]').forEach(button => button.addEventListener('click', () => setTheme(!document.documentElement.classList.contains('dark'))));
+    document.querySelectorAll('[data-open-booking]').forEach(button => button.addEventListener('click', () => openBooking()));
+    document.querySelectorAll('[data-service]').forEach(button => button.addEventListener('click', () => openBooking(button.dataset.service)));
+    document.getElementById('closeBooking').addEventListener('click', () => hideModal(bookingModal));
+    document.getElementById('closeSuccess').addEventListener('click', () => hideModal(successModal));
+    document.getElementById('closeAdminLogin').addEventListener('click', () => hideModal(adminLoginModal));
+    [bookingModal, successModal, adminLoginModal].forEach(modal => modal.addEventListener('mousedown', event => { if (event.target === modal) hideModal(modal); }));
+
+    document.querySelectorAll('.filter').forEach(button => button.addEventListener('click', () => {
+      document.querySelectorAll('.filter').forEach(item => { item.classList.remove('active'); item.setAttribute('aria-pressed', 'false'); });
+      button.classList.add('active');
+      button.setAttribute('aria-pressed', 'true');
+      renderPortfolio(button.dataset.filter);
+    }));
+
+    menuButton.addEventListener('click', () => {
+      const open = mobileMenu.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(open));
+      menuButton.setAttribute('aria-label', open ? '關閉導覽選單' : '開啟導覽選單');
+    });
+    mobileMenu.querySelectorAll('a, button').forEach(item => item.addEventListener('click', () => { mobileMenu.classList.remove('open'); menuButton.setAttribute('aria-expanded', 'false'); }));
+
+    document.addEventListener('keydown', event => {
+      if (!activeModal) return;
+      if (event.key === 'Escape') { hideModal(activeModal); return; }
+      if (event.key !== 'Tab') return;
+      const items = focusableIn(activeModal);
+      if (!items.length) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+    });
+
+    form.addEventListener('submit', async event => {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+      formStatus.textContent = '';
+      submitButton.disabled = true;
+      submitButton.textContent = '傳送中，請稍候…';
+      const fields = new FormData(form);
+      const payload = {
+        serviceType: fields.get('serviceType'), date: fields.get('date'), location: fields.get('location'), budget: fields.get('budget'),
+        name: fields.get('name'), phone: fields.get('phone'), lineId: fields.get('lineId'), remarks: fields.get('remarks'),
+        website: fields.get('website'), startedAt: bookingOpenedAt
+      };
+      try {
+        const result = await requestJson('/api/booking', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+        document.getElementById('bookingRef').textContent = result.refCode;
+        hideModal(bookingModal, false);
+        form.reset();
+        showModal(successModal);
+      } catch (error) {
+        formStatus.textContent = `${error.message} 請稍後再試，或使用頁面上的 LINE 連結聯絡。`;
+        formStatus.focus();
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = '送出並等待確認';
+      }
+    });
+
+    document.getElementById('adminEntry').addEventListener('click', openAdmin);
+    document.getElementById('footerAdminLink').addEventListener('click', event => { event.preventDefault(); openAdmin(); });
+    document.getElementById('adminLoginForm').addEventListener('submit', async event => {
+      event.preventDefault();
+      const loginForm = event.currentTarget;
+      const status = document.getElementById('adminLoginStatus');
+      const button = document.getElementById('adminLoginSubmit');
+      const fields = new FormData(loginForm);
+      status.textContent = '';
+      button.disabled = true;
+      try {
+        await requestJson('/api/admin/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ username: fields.get('username'), password: fields.get('password') }) });
+        adminAuthenticated = true;
+        loginForm.reset();
+        hideModal(adminLoginModal, false);
+        setEditing(true);
+      } catch (error) { status.textContent = error.message; }
+      finally { button.disabled = false; }
+    });
+
+    document.addEventListener('input', event => {
+      const editable = event.target.closest?.('[data-edit-key]');
+      if (editable && adminEditing) setAdminDirty();
+    });
+
+    document.addEventListener('click', event => {
+      const button = event.target.closest?.('[data-replace-image]');
+      if (!button || !adminEditing) return;
+      currentImageKey = button.dataset.replaceImage;
+      adminImageInput.value = '';
+      adminImageInput.click();
+    });
+
+    adminImageInput.addEventListener('change', async () => {
+      const file = adminImageInput.files?.[0];
+      if (!file || !currentImageKey) return;
+      if (file.size > 8 * 1024 * 1024) { adminStatus.textContent = '照片不可超過 8 MB。'; return; }
+      const formData = new FormData();
+      formData.append('slot', currentImageKey);
+      formData.append('file', file);
+      adminStatus.textContent = '正在上傳照片…';
+      try {
+        const result = await requestJson('/api/admin/upload', { method: 'POST', body: formData });
+        contentState.images[currentImageKey] = result.url;
+        document.querySelectorAll(`[data-image-key="${CSS.escape(currentImageKey)}"]`).forEach(image => { image.src = result.url; });
+        setAdminDirty('照片已上傳，請按「儲存變更」套用到網站。');
+      } catch (error) { adminStatus.textContent = error.message; }
+    });
+
+    document.getElementById('adminSave').addEventListener('click', async () => {
+      const button = document.getElementById('adminSave');
+      button.disabled = true;
+      adminStatus.textContent = '正在儲存網站內容…';
+      try {
+        const result = await requestJson('/api/admin/content', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(collectContent()) });
+        applyContent(result.content);
+        adminDirty = false;
+        adminStatus.textContent = '已儲存並套用網站內容。';
+      } catch (error) { adminStatus.textContent = error.message; }
+      finally { button.disabled = false; }
+    });
+
+    document.getElementById('adminExit').addEventListener('click', () => {
+      if (adminDirty && !window.confirm('仍有尚未儲存的變更，確定結束編輯嗎？')) return;
+      adminDirty = false;
+      setEditing(false);
+    });
+
+    document.getElementById('adminLogout').addEventListener('click', async () => {
+      if (adminDirty && !window.confirm('仍有尚未儲存的變更，確定登出嗎？')) return;
+      try { await requestJson('/api/admin/logout', { method: 'POST' }); } catch { /* End local edit state even if session already expired. */ }
+      adminDirty = false;
+      adminAuthenticated = false;
+      setEditing(false);
+    });
+
+    window.addEventListener('beforeunload', event => { if (adminDirty) { event.preventDefault(); event.returnValue = ''; } });
+  </script>
+</body>
+</html>

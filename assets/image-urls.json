@@ -1,0 +1,21 @@
+{
+  "hero": {
+    "hero-main-v1": "/assets/images/hero/hero-main-v1.webp",
+    "hero-og-v1": "/assets/images/hero/hero-og-v1.jpg"
+  },
+  "service": {
+    "service-space-v1": "/assets/images/service/service-space-v1.webp",
+    "service-wedding-v1": "/assets/images/service/service-wedding-v1.webp",
+    "service-gift-v1": "/assets/images/service/service-gift-v1.webp",
+    "service-workshop-v1": "/assets/images/service/service-workshop-v1.webp"
+  },
+  "portfolio": {
+    "port-space-1-v1": "/assets/images/portfolio/port-space-1-v1.webp",
+    "port-space-2-v1": "/assets/images/portfolio/port-space-2-v1.webp",
+    "port-wedding-1-v1": "/assets/images/portfolio/port-wedding-1-v1.webp",
+    "port-wedding-2-v1": "/assets/images/portfolio/port-wedding-2-v1.webp",
+    "port-gift-1-v1": "/assets/images/portfolio/port-gift-1-v1.webp",
+    "port-gift-2-v1": "/assets/images/portfolio/port-gift-2-v1.webp",
+    "port-gift-3-v1": "/assets/images/portfolio/port-gift-3-v1.webp"
+  }
+}
