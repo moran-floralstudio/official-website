@@ -100,10 +100,11 @@
       background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
     }
     html.dark .grain { mix-blend-mode: screen; opacity: .035; }
-    #cursorDot { position: fixed; top: 0; left: 0; z-index: 95; width: 26px; height: 26px; border: 1px solid var(--faint); border-radius: 50%; pointer-events: none; transform: translate(-100px, -100px); transition: width .3s ease, height .3s ease, background-color .3s ease; display: none; }
+    /* difference 混色讓圓環永遠是背景的反相：紙色區呈墨色、墨黑區呈亮色，不會消失在深色區塊裡 */
+    #cursorDot { position: fixed; top: 0; left: 0; z-index: 999; width: 26px; height: 26px; margin: -13px 0 0 -13px; border: 1px solid #fff; border-radius: 50%; pointer-events: none; mix-blend-mode: difference; translate: -100px -100px; transform: scale(1); will-change: translate, transform; transition: transform .3s ease, background-color .3s ease; display: none; }
     body.has-dot #cursorDot { display: block; }
     body.has-dot, body.has-dot a, body.has-dot button, body.has-dot label { cursor: none; }
-    #cursorDot.near { width: 54px; height: 54px; background: color-mix(in srgb, var(--ink) 88%, transparent); }
+    #cursorDot.near { transform: scale(2.08); background: #fff; }
 
     .reveal { opacity: 0; transform: translateY(34px); transition: opacity 1.2s var(--ease), transform 1.2s var(--ease); }
     .reveal.in { opacity: 1; transform: none; }
@@ -114,13 +115,13 @@
     /* ── 公告與導覽 ──────────────────────────────── */
     .announcement { padding: 10px 20px; background: var(--sumi); color: var(--sumi-ink); text-align: center; font: 300 11px/1.6 var(--sans); letter-spacing: .28em; }
     .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 70; padding: 32px 0; background: transparent; backdrop-filter: blur(12px); transition: padding .7s var(--ease), background-color .7s ease, border-color .7s ease; border-bottom: 1px solid transparent; }
-    .nav.scrolled { padding: 18px 0; background: color-mix(in srgb, var(--paper) 78%, transparent); border-bottom-color: var(--line); }
+    .nav.scrolled { padding: 18px 0; background: color-mix(in srgb, var(--paper) 92%, transparent); border-bottom-color: var(--line); }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
     .brand { display: flex; align-items: baseline; gap: 14px; }
     .brand-name { font-size: 20px; font-weight: 200; letter-spacing: .5em; }
     .brand-en { font: 300 8px/1 var(--sans); letter-spacing: .5em; color: var(--faint); text-transform: uppercase; }
-    .nav-links { display: flex; gap: 34px; }
-    .nav-links a { font: 300 11px/1 var(--sans); letter-spacing: .28em; color: var(--muted); }
+    .nav-links { display: flex; gap: 30px; }
+    .nav-links a { font: 400 12.5px/1 var(--sans); letter-spacing: .2em; color: var(--ink); }
     .underline { position: relative; }
     .underline::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform .6s var(--ease); }
     .underline:hover::after { transform: scaleX(1); transform-origin: left; }
@@ -816,17 +817,25 @@
       const dot = document.getElementById('cursorDot');
       if (!dot || reduceMotion || !window.matchMedia('(pointer:fine)').matches) return;
       document.body.classList.add('has-dot');
-      let targetX = -100, targetY = -100, currentX = -100, currentY = -100;
-      window.addEventListener('mousemove', event => { targetX = event.clientX; targetY = event.clientY; }, { passive: true });
+      let targetX = -100, targetY = -100, currentX = -100, currentY = -100, running = false;
+      // 只動 translate（合成器屬性，不觸發版面重算），且追上後就停掉 rAF，不空轉
+      function step() {
+        currentX += (targetX - currentX) * 0.35;
+        currentY += (targetY - currentY) * 0.35;
+        const settled = Math.abs(targetX - currentX) < 0.5 && Math.abs(targetY - currentY) < 0.5;
+        if (settled) { currentX = targetX; currentY = targetY; }
+        dot.style.translate = `${currentX}px ${currentY}px`;
+        if (settled) { running = false; return; }
+        window.requestAnimationFrame(step);
+      }
+      window.addEventListener('mousemove', event => {
+        targetX = event.clientX;
+        targetY = event.clientY;
+        if (!running) { running = true; window.requestAnimationFrame(step); }
+      }, { passive: true });
       window.addEventListener('mouseover', event => {
         dot.classList.toggle('near', Boolean(event.target.closest?.('a, button, label, summary, input, select, textarea')));
       }, { passive: true });
-      (function loop() {
-        currentX += (targetX - currentX) * 0.18;
-        currentY += (targetY - currentY) * 0.18;
-        dot.style.transform = `translate(${currentX - 13}px, ${currentY - 13}px)`;
-        window.requestAnimationFrame(loop);
-      })();
     }
 
     document.addEventListener('DOMContentLoaded', async () => {
