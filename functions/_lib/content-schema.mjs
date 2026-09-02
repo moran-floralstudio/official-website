@@ -29,13 +29,18 @@ function cleanText(value) {
   return typeof value === 'string' ? value.replace(/\r\n/g, '\n').trim().slice(0, 2000) : '';
 }
 
+function cleanTimestamp(value) {
+  const time = Date.parse(value);
+  return Number.isFinite(time) ? new Date(time).toISOString() : '';
+}
+
 function cleanImage(value) {
   if (typeof value !== 'string') return '';
   const path = value.trim();
   return /^\/(?:media\/uploads|assets\/images\/uploads)\/[A-Za-z0-9._/-]+$/.test(path) ? path : '';
 }
 
-export function normalizeContent(input) {
+export function normalizeContent(input, savedAt = '') {
   const text = {};
   const images = {};
   for (const [key, value] of Object.entries(input?.text || {})) {
@@ -47,7 +52,7 @@ export function normalizeContent(input) {
       if (image) images[key] = image;
     }
   }
-  return { version: 1, updatedAt: new Date().toISOString(), text, images };
+  return { version: 1, updatedAt: cleanTimestamp(savedAt) || new Date().toISOString(), text, images };
 }
 
 export function isAllowedImageKey(value) {

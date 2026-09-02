@@ -52,6 +52,14 @@ test('content schema retains only allowed keys and relative upload URLs', () => 
   assert.equal(isAllowedImageKey('portfolioImage7'), true);
 });
 
+test('reading keeps the stored save time and writing stamps a new one', () => {
+  const savedAt = '2026-08-01T03:04:05.000Z';
+  assert.equal(normalizeContent({ text: { heroLine1: '標題' } }, savedAt).updatedAt, savedAt);
+  assert.equal(normalizeContent({}, 'not-a-date').updatedAt === 'not-a-date', false);
+  const before = Date.now();
+  assert.ok(Date.parse(normalizeContent({}).updatedAt) >= before);
+});
+
 test('image validation checks MIME type and magic bytes', () => {
   assert.equal(validateImageBytes('image/jpeg', Uint8Array.from([0xff, 0xd8, 0xff, 0x00])), true);
   assert.equal(validateImageBytes('image/png', Uint8Array.from([0x89,0x50,0x4e,0x47,0x0d,0x0a,0x1a,0x0a])), true);

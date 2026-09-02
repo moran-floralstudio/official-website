@@ -71,7 +71,10 @@ async function webRequest(request, buffer) {
 }
 
 async function readContent() {
-  try { return normalizeContent(JSON.parse(await readFile(contentPath, 'utf8'))); }
+  try {
+    const stored = JSON.parse(await readFile(contentPath, 'utf8'));
+    return normalizeContent(stored, stored?.updatedAt);
+  }
   catch { return normalizeContent({}); }
 }
 
