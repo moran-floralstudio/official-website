@@ -118,6 +118,8 @@ node --test tests/*.test.mjs
 
 Pages 專案 `moran-floralstudio` 已連線至 `moran-floralstudio/official-website`，生產分支 `main`，push 即自動部署。
 
+正式網域為 `https://www.moranfloral.tw`（Cloudflare 自訂網域）。`index.html` 的 canonical／og:url／JSON-LD、`robots.txt` 的 Sitemap 與 `sitemap.xml` 的 `<loc>` 都寫死這個網址，換網域時必須一起改。裸網域 `moranfloral.tw` 與原本的 `moran-floral-studio.pages.dev` 應在 Cloudflare 設 301 導向 www，否則管理登入的 session cookie（host-only、`SameSite=Strict`）不會跨主機沿用。
+
 | 設定 | 值 | 原因 |
 |---|---|---|
 | Framework 預設 | 無 | 純靜態，無前端建置 |
