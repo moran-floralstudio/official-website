@@ -110,6 +110,7 @@
     .reveal.in { opacity: 1; transform: none; }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: none; } }
     @keyframes slitOpen { from { clip-path: inset(0 46% 0 46%); } to { clip-path: inset(0 0 0 0); } }
+    @keyframes ruleIn { from { transform: scaleX(0); } to { transform: scaleX(1); } }
     @keyframes drift { 0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); } 50% { transform: translate3d(0, -14px, 0) rotate(.6deg); } }
 
     /* ── 公告與導覽 ──────────────────────────────── */
@@ -149,9 +150,16 @@
     .hero-head { display: flex; align-items: flex-start; gap: clamp(20px, 4vw, 64px); animation: fadeUp 1.3s .1s both; }
     .vertical { writing-mode: vertical-rl; text-orientation: upright; }
     .hero-tag { padding-top: 8px; font: 300 10px/1 var(--sans); letter-spacing: .55em; color: var(--faint); }
-    .hero h1 { font-size: clamp(48px, 11.5vw, 210px); line-height: .92; letter-spacing: .02em; }
-    .hero h1 + h1 { margin-top: .06em; margin-left: clamp(0px, 16vw, 300px); }
-    .hero-en { display: inline-block; font-family: var(--display); font-style: italic; font-weight: 300; font-size: .16em; letter-spacing: 0; color: var(--faint); margin-left: .4em; white-space: nowrap; vertical-align: baseline; }
+    .hero h1 { display: flex; flex-wrap: wrap; align-items: flex-end; font-size: clamp(38px, 7.6vw, 132px); line-height: 1; letter-spacing: .04em; }
+    .hero h1 .em { font-size: 1em; letter-spacing: .02em; }
+    .hero h1 .de { font-size: .46em; letter-spacing: .16em; color: color-mix(in srgb, var(--ink) 45%, transparent); padding-bottom: .34em; }
+    .hero h2 { display: flex; flex-wrap: wrap; align-items: flex-end; min-width: 0; font-size: clamp(19px, 3vw, 50px); font-weight: 200; line-height: 1.15; letter-spacing: .12em; color: color-mix(in srgb, var(--ink) 72%, transparent); }
+    .hero h2 .em { font-size: 1em; letter-spacing: .06em; }
+    .hero h2 .de { font-size: .58em; letter-spacing: .18em; color: color-mix(in srgb, var(--ink) 40%, transparent); }
+    .hero h1 span, .hero h2 span { display: inline-block; }
+    .hero-sub { display: flex; align-items: baseline; gap: clamp(14px, 2vw, 30px); margin-top: clamp(18px, 2.2vw, 34px); margin-left: clamp(0px, 9vw, 168px); }
+    .hero-rule { flex: 0 0 auto; width: clamp(34px, 7vw, 120px); height: 1px; background: var(--line); transform-origin: left; animation: ruleIn 1.4s .7s var(--ease) both; }
+    .hero-en { display: block; margin-top: clamp(20px, 2.4vw, 34px); margin-left: clamp(0px, 9vw, 168px); font-family: var(--display); font-style: italic; font-weight: 300; font-size: clamp(15px, 1.5vw, 24px); letter-spacing: .02em; color: var(--faint); }
     .hero-foot { display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: end; margin-top: clamp(48px, 7vw, 96px); animation: fadeUp 1.3s .5s both; }
     .hero-copy { max-width: 30em; color: var(--muted); font-size: 15px; line-height: 2.3; }
     .hero-actions { display: flex; gap: 28px; align-items: center; font: 300 11px/1 var(--sans); letter-spacing: .3em; white-space: nowrap; }
@@ -333,8 +341,9 @@
       .menu-btn { display: block; }
       .hero { padding-top: 130px; }
       .hero-foot { grid-template-columns: 1fr; }
-      .hero h1 + h1 { margin-left: 0; }
-      .hero-scroll, .hero-tag, .philosophy-vertical, .hero-en { display: none; }
+      .hero-sub, .hero-en { margin-left: 0; }
+      .hero h1 .de { padding-bottom: .28em; }
+      .hero-scroll, .hero-tag, .philosophy-vertical { display: none; }
       .philosophy-grid, .faq-grid { grid-template-columns: 1fr; }
       .faq-side { position: static; }
       .values, .process { grid-template-columns: 1fr; }
@@ -356,6 +365,11 @@
     @media (max-width: 600px) {
       .hero-proof { grid-template-columns: 1fr; }
       .hero-proof div, .hero-proof div + div { padding: 20px 0; border-left: 0; border-bottom: 1px solid var(--line); }
+    }
+
+    /* 400px 以下五個字組排不進一行，會把「裡」擠成孤字；依字組總寬換算字級以維持單行構圖 */
+    @media (max-width: 400px) {
+      .hero h1 { font-size: calc((100vw - 52px) / 9.6); }
     }
     @media (pointer: coarse) {
       body.has-dot, body.has-dot a, body.has-dot button, body.has-dot label { cursor: auto; }
@@ -402,8 +416,9 @@
         <div class="hero-head">
           <div class="vertical hero-tag" aria-hidden="true">WABI · SABI</div>
           <div>
-            <h1><span data-edit-key="heroLine1">把花開的瞬間</span><span class="hero-en">the moment it blooms</span></h1>
-            <h1><span data-edit-key="heroLine2">留在日常裡</span></h1>
+            <h1 data-edit-key="heroLine1" data-segments="d1 e5 d2 e2 d1"><span class="de">把</span><span class="em">花開的瞬間</span><span class="de">留在</span><span class="em">日常</span><span class="de">裡</span></h1>
+            <div class="hero-sub"><span class="hero-rule" aria-hidden="true"></span><h2 data-edit-key="heroLine2" data-segments="e3 d5 e2 d2"><span class="em">不凋謝</span><span class="de">的溫柔獻給</span><span class="em">重要</span><span class="de">的人</span></h2></div>
+            <p class="hero-en">the moment it blooms, kept close</p>
           </div>
         </div>
         <div class="hero-foot">
@@ -687,13 +702,35 @@
       }).join('');
     }
 
+    function renderEditableText(element, value) {
+      const spec = element.dataset.segments;
+      if (!spec) { element.textContent = value; return; }
+      const groups = spec.trim().split(/\s+/).map(item => [item.slice(0, 1), Number(item.slice(1))]);
+      const characters = [...value];
+      const invalid = groups.some(([kind, size]) => (kind !== 'd' && kind !== 'e') || !Number.isInteger(size) || size < 1);
+      if (invalid || groups.reduce((sum, [, size]) => sum + size, 0) !== characters.length) {
+        element.textContent = value;
+        return;
+      }
+      const fragment = document.createDocumentFragment();
+      let cursor = 0;
+      for (const [kind, size] of groups) {
+        const span = document.createElement('span');
+        span.className = kind === 'e' ? 'em' : 'de';
+        span.textContent = characters.slice(cursor, cursor + size).join('');
+        cursor += size;
+        fragment.append(span);
+      }
+      element.replaceChildren(fragment);
+    }
+
     function applyContent(content) {
       if (!content || typeof content !== 'object') return;
       Object.assign(contentState.text, content.text || {});
       Object.assign(contentState.images, content.images || {});
       document.querySelectorAll('[data-edit-key]').forEach(element => {
         const value = contentState.text[element.dataset.editKey];
-        if (typeof value === 'string') element.textContent = value;
+        if (typeof value === 'string') renderEditableText(element, value);
       });
       document.querySelectorAll('[data-image-key]').forEach(image => {
         const value = contentState.images[image.dataset.imageKey];
