@@ -140,3 +140,11 @@ Pages 專案 `moran-floralstudio` 已連線至 `moran-floralstudio/official-webs
 - 作品區目前明確標示為「風格參考」，不可改寫成客戶案例，除非已取得真實案件資訊與使用授權。
 - 地址、營業時間、服務地區、回覆時限與退款規則目前沒有正式資料，因此頁面只保留逐案確認的中性說明。
 - 若要新增這些資訊，請先確認實際營運規則，再同步更新頁面、結構化資料與 FAQ。
+
+## SEO／AEO／GEO
+
+- `index.html` 的 JSON-LD 以 `@graph` 描述品牌（`Florist`，`@id` 為 `https://www.moranfloral.tw/#organization`）、線上商店、網站與首頁。這個 `@id` 與線上商店 `shop.moranfloral.tw` 的結構化資料共用，兩站才會被視為同一品牌；要改就兩邊一起改。
+- `#faqSchema`（FAQPage）的問答必須與 `#faq` 的文字一致。後台改了 FAQ 文字時，頁面載入後 `syncFaqSchema()` 會依畫面重新同步，但不執行 JS 的 AI 爬蟲讀到的仍是靜態版本，因此改過 FAQ 後也要更新 `index.html` 與 `llms.txt`。
+- `llms.txt` 是給 AI 讀的站點摘要，只寫官網上已公開的內容；服務、流程或 FAQ 改動時一併更新。
+- `404.html` 讓不存在的網址回 404，而不是由 Cloudflare Pages 把首頁當成任何網址的內容回 200。
+- 內容有實質更新時，順手更新 `sitemap.xml` 的 `<lastmod>`。

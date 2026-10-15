@@ -14,6 +14,8 @@
   <meta property="og:image" content="https://www.moranfloral.tw/assets/images/hero/hero-og-v1.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="默藍花藝設計的花藝作品">
+  <meta property="og:site_name" content="默藍花藝設計 Moran Floral Studio">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://www.moranfloral.tw/">
   <link rel="alternate" hreflang="zh-Hant-TW" href="https://www.moranfloral.tw/">
@@ -22,15 +24,86 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Serif+TC:wght@200;300;400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+  <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
+  <!--
+    結構化資料。Organization 的 @id 與線上商店（shop.moranfloral.tw）共用，
+    兩站才會被視為同一個品牌；改 @id 時兩邊要一起改。
+    只寫可查證的事實：地址、營業時間、服務地區目前沒有正式資料，不要自行補上。
+    FAQPage 的問答必須與下方 #faq 的文字一致；後台改過文字時，頁尾的 syncFaqSchema() 會在載入後重新同步。
+  -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Florist",
-    "name": "默藍花藝設計 Moran Floral Studio",
-    "url": "https://www.moranfloral.tw/",
-    "image": "https://www.moranfloral.tw/assets/images/hero/hero-og-v1.jpg",
-    "description": "以日式侘寂美學提供空間花藝、婚禮花藝、客製花禮與實體花藝課程預約諮詢。",
-    "sameAs": ["https://line.me/R/ti/p/%40474xknil"]
+    "@graph": [
+      {
+        "@type": "Florist",
+        "@id": "https://www.moranfloral.tw/#organization",
+        "name": "默藍花藝設計",
+        "alternateName": ["Moran Floral Studio", "MORAN", "默藍花藝"],
+        "url": "https://www.moranfloral.tw/",
+        "image": "https://www.moranfloral.tw/assets/images/hero/hero-og-v1.jpg",
+        "logo": "https://www.moranfloral.tw/assets/favicon.svg",
+        "slogan": "把花開的瞬間，留在日常裡",
+        "description": "默藍花藝設計以日式侘寂美學，順應花材與枝葉的自然姿態，提供空間花藝陳列、婚禮花藝設計、客製花禮訂製與實體花藝課程的預約諮詢；花材、尺寸與報價依需求逐案確認。另設線上商店販售不凋花、永生花與乾燥花禮。",
+        "knowsAbout": ["空間花藝", "婚禮花藝", "捧花", "客製花禮", "企業贈禮", "花藝課程", "侘寂美學", "不凋花", "永生花", "乾燥花"],
+        "sameAs": ["https://line.me/R/ti/p/%40474xknil", "https://shop.moranfloral.tw/"],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "customer service",
+          "url": "https://line.me/R/ti/p/%40474xknil",
+          "availableLanguage": "zh-Hant"
+        },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "花藝服務",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "空間花藝陳列", "serviceType": "空間花藝", "description": "商業場域、迎賓區或居家空間的花藝配置，依現場條件與維護需求討論。" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "婚禮花藝設計", "serviceType": "婚禮花藝", "description": "從捧花、胸花到儀式與迎賓區佈置，依場地、主題與預算確認製作範圍。" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "客製花禮訂製", "serviceType": "客製花禮", "description": "生日、紀念、祝福與企業贈禮，可從色系、心意、尺寸與預算開始討論。" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "實體花藝課程", "serviceType": "花藝課程", "description": "課程內容、材料與開課日期依當期公告；可先留下希望學習的主題與人數。" } }
+          ]
+        }
+      },
+      {
+        "@type": "OnlineStore",
+        "@id": "https://shop.moranfloral.tw/#store",
+        "name": "默藍花藝設計 線上花禮店",
+        "url": "https://shop.moranfloral.tw/",
+        "parentOrganization": { "@id": "https://www.moranfloral.tw/#organization" }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.moranfloral.tw/#website",
+        "name": "默藍花藝設計 Moran Floral Studio",
+        "url": "https://www.moranfloral.tw/",
+        "inLanguage": "zh-Hant-TW",
+        "publisher": { "@id": "https://www.moranfloral.tw/#organization" }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://www.moranfloral.tw/#webpage",
+        "url": "https://www.moranfloral.tw/",
+        "name": "默藍花藝設計｜Moran Floral Studio",
+        "inLanguage": "zh-Hant-TW",
+        "isPartOf": { "@id": "https://www.moranfloral.tw/#website" },
+        "about": { "@id": "https://www.moranfloral.tw/#organization" },
+        "primaryImageOfPage": "https://www.moranfloral.tw/assets/images/hero/hero-og-v1.jpg"
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json" id="faqSchema">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": "https://www.moranfloral.tw/#faq",
+    "mainEntity": [
+      { "@type": "Question", "name": "需要提前多久詢問？", "acceptedAnswer": { "@type": "Answer", "text": "不同服務需要的準備時間不同。請先填寫希望日期，團隊會依檔期與製作規模判斷；大型空間或婚禮專案建議儘早詢問。" } },
+      { "@type": "Question", "name": "可以指定與照片完全一樣嗎？", "acceptedAnswer": { "@type": "Answer", "text": "照片可用來溝通色系、氛圍與構圖，但自然花材會受季節、產地與批次影響，因此不承諾完全複製。" } },
+      { "@type": "Question", "name": "價格是否就是表單中的預算區間？", "acceptedAnswer": { "@type": "Answer", "text": "預算區間用來協助初步判斷，不是固定售價。正式報價會列出已確認的製作與交付範圍。" } },
+      { "@type": "Question", "name": "送出表單後可以修改嗎？", "acceptedAnswer": { "@type": "Answer", "text": "尚未確認報價前可補充需求；進入備料或製作後的變更與取消，則依雙方確認的案件條件處理。" } },
+      { "@type": "Question", "name": "個人資料會如何使用？", "acceptedAnswer": { "@type": "Answer", "text": "表單中的姓名、電話、LINE ID 與案件資訊，只用於本次諮詢、聯絡與後續服務；請不要填入身分證、金融帳號等不必要的敏感資料。" } }
+    ]
   }
   </script>
   <style>
@@ -727,6 +800,25 @@
         if (value) image.src = value;
       });
       renderPortfolio(activeFilter);
+      syncFaqSchema();
+    }
+
+    /* FAQPage 結構化資料跟著畫面上的問答走：後台改了 FAQ 文字，會執行 JS 的搜尋引擎讀到的仍是一致的版本。 */
+    function syncFaqSchema() {
+      const schema = document.getElementById('faqSchema');
+      if (!schema) return;
+      const mainEntity = [...document.querySelectorAll('#faq details')].map(item => ({
+        '@type': 'Question',
+        name: item.querySelector('summary')?.textContent.trim() || '',
+        acceptedAnswer: { '@type': 'Answer', text: item.querySelector('p')?.textContent.trim() || '' }
+      })).filter(entry => entry.name && entry.acceptedAnswer.text);
+      if (!mainEntity.length) return;
+      schema.textContent = JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        '@id': 'https://www.moranfloral.tw/#faq',
+        mainEntity
+      }).replace(/</g, '\\u003c');
     }
 
     async function loadContent() {
