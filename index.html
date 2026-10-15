@@ -210,6 +210,12 @@
     .mobile-menu.open { display: grid; gap: 2px; }
     .mobile-menu a { padding: 14px 0; border-bottom: 1px solid var(--line); color: var(--muted); font: 300 12px/1 var(--sans); letter-spacing: .24em; }
     .mobile-menu .btn { margin-top: 16px; }
+    /* 商城是另一個網站，不是頁內章節：不編號，用細線和章節隔開 */
+    .nav-links a { white-space: nowrap; }
+    .nav-shop { padding-left: 30px; border-left: 1px solid var(--line); }
+    .nav-shop::after { left: 30px; }
+    .mobile-menu .mobile-shop { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; color: var(--ink); }
+    .mobile-shop span { color: var(--faint); font-size: 10px; letter-spacing: .12em; }
 
     /* ── Hero ───────────────────────────────────── */
     .hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; overflow: hidden; padding: 150px 0 0; }
@@ -334,6 +340,10 @@
     footer { padding: 26px 0 46px; background: var(--sumi); color: var(--sumi-ink); }
     .footer-original-row { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 26px; border-top: 1px solid var(--sumi-line); font: 300 10px/2 var(--sans); letter-spacing: .24em; color: rgba(233, 228, 218, .45); }
     .footer-credit { text-align: right; }
+    .footer-shop { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px 32px; flex-wrap: wrap; padding-bottom: 26px; }
+    .footer-shop .eyebrow { color: rgba(233, 228, 218, .45); }
+    .footer-shop-copy { margin: 10px 0 0; text-wrap: balance; font-size: 14px; letter-spacing: .08em; color: rgba(233, 228, 218, .72); }
+    .footer-shop-link { font: 400 12.5px/1 var(--sans); letter-spacing: .2em; color: var(--sumi-ink); padding-bottom: 6px; }
     .footer-admin-link { border-bottom: 1px solid transparent; color: rgba(233, 228, 218, .8); transition: border-color .4s ease; }
     .footer-admin-link:hover { border-bottom-color: currentColor; }
 
@@ -401,6 +411,9 @@
     /* ── 響應式 ─────────────────────────────────── */
     @media (max-width: 1100px) {
       .work:nth-child(n) { grid-column: span 6; height: clamp(300px, 42vw, 460px); }
+      /* 加了「默藍商城」後，導覽列約要 1085px 才放得下一行，比 960 早一步改用漢堡選單 */
+      .nav-links { display: none; }
+      .menu-btn { display: block; }
     }
     @media (max-width: 960px) {
       :root { --pad: 22px; }
@@ -425,6 +438,7 @@
       .slit { height: 62vh; }
       .footer-original-row { flex-direction: column; text-align: center; }
       .footer-credit { text-align: center; }
+      .footer-shop { flex-direction: column; align-items: center; text-align: center; }
       .field-row, .service-options { grid-template-columns: 1fr; }
       .modal { padding: 0; }
       .modal-panel { margin: 0; min-height: 100vh; }
@@ -457,7 +471,7 @@
         <span class="brand-name">默藍</span><span class="brand-en">Moran Floral Studio</span>
       </a>
       <div class="nav-links">
-        <a class="underline" href="#philosophy">01 理念</a><a class="underline" href="#services">02 服務</a><a class="underline" href="#portfolio">03 作品</a><a class="underline" href="#process">04 流程</a><a class="underline" href="#faq">05 問答</a>
+        <a class="underline" href="#philosophy">01 理念</a><a class="underline" href="#services">02 服務</a><a class="underline" href="#portfolio">03 作品</a><a class="underline" href="#process">04 流程</a><a class="underline" href="#faq">05 問答</a><a class="underline nav-shop" href="https://shop.moranfloral.tw/">默藍商城 ↗</a>
       </div>
       <div class="nav-actions">
         <button class="theme-btn" type="button" data-theme-toggle aria-label="切換深色或淺色模式">深色模式</button>
@@ -468,7 +482,7 @@
       </div>
     </div>
     <div id="mobileMenu" class="mobile-menu">
-      <a href="#philosophy">01 理念</a><a href="#services">02 服務</a><a href="#portfolio">03 作品</a><a href="#process">04 流程</a><a href="#faq">05 問答</a>
+      <a href="#philosophy">01 理念</a><a href="#services">02 服務</a><a href="#portfolio">03 作品</a><a href="#process">04 流程</a><a href="#faq">05 問答</a><a class="mobile-shop" href="https://shop.moranfloral.tw/">默藍商城 ↗<span>不凋花・永生花・乾燥花禮</span></a>
       <button class="btn" type="button" data-open-booking>預約花藝諮詢</button>
     </div>
   </nav>
@@ -655,6 +669,13 @@
   </main>
 
   <footer>
+    <div class="container footer-shop">
+      <div>
+        <span class="eyebrow">Online Shop</span>
+        <p class="footer-shop-copy">不凋花、永生花與乾燥花禮，手工製作，全台宅配。</p>
+      </div>
+      <a class="footer-shop-link underline" href="https://shop.moranfloral.tw/">前往默藍商城 ↗</a>
+    </div>
     <div class="container footer-original-row">
       <p data-edit-key="footerCopyright">© 2026 默藍花藝設計 Moran Floral Studio. All Rights Reserved.</p>
       <p class="footer-credit"><span data-edit-key="footerCreditPrefix">設計與規劃由</span><a id="footerAdminLink" class="footer-admin-link" href="#admin-login" aria-label="莫珩管理團隊：進入網站管理模式">莫珩</a><span data-edit-key="footerCreditSuffix">管理團隊 極致打造</span></p>
