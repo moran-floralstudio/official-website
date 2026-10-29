@@ -234,8 +234,6 @@
     .hero-frame { position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--night-surface); }
     .hero-frame img { width: 100%; height: 100%; object-fit: cover; }
     .hero-print-main { right: 0; top: 32px; bottom: 56px; width: 50%; }
-    .hero-fade img { position: absolute; inset: 0; opacity: 0; transform: scale(1.06); transition: opacity 1.6s ease, transform 8s linear; }
-    .hero-fade img.is-on { opacity: 1; transform: scale(1); }
     .hero-caption { position: absolute; top: calc(100% + 12px); left: 0; color: var(--night-muted); font-size: var(--fs-small); }
     .hero-print-small { left: 8.333%; top: 32px; width: min(12vw, 200px); aspect-ratio: 1 / 1; }
     .hero-print-small img { filter: brightness(.7); }
@@ -499,10 +497,8 @@
     <section id="top" class="hero">
       <div class="container hero-stage">
         <figure class="hero-print hero-print-main">
-          <div class="hero-frame hero-fade image-slot">
-            <img id="heroImage" class="is-on" data-image-key="heroImage" src="/assets/images/hero/hero-main-v1.webp" width="900" height="1200" alt="粉白色花藝展示作品" fetchpriority="high" decoding="async">
-            <img data-image-key="portfolioImage4" src="/assets/images/portfolio/port-wedding-2-v1.webp" width="750" height="1000" alt="" aria-hidden="true" loading="lazy" decoding="async">
-            <img data-image-key="serviceGift" src="/assets/images/service/service-gift-v1.webp" width="600" height="800" alt="" aria-hidden="true" loading="lazy" decoding="async">
+          <div class="hero-frame image-slot">
+            <img id="heroImage" data-image-key="heroImage" src="/assets/images/hero/hero-main-v1.webp" width="900" height="1200" alt="粉白色花藝展示作品" fetchpriority="high" decoding="async">
             <button class="image-edit-button" type="button" data-replace-image="heroImage">更換照片</button>
           </div>
           <figcaption class="hero-caption" data-edit-key="heroCaption">光影、留白與自然線條</figcaption>
@@ -747,8 +743,6 @@
     const adminImageInput = document.getElementById('adminImageInput');
     const siteNav = document.getElementById('siteNav');
     const heroSection = document.getElementById('top');
-    const heroFrames = [...document.querySelectorAll('.hero-fade img')];
-    let heroFrameIndex = 0;
     const contentState = { text: {}, images: {} };
     let activeFilter = 'all';
     let bookingOpenedAt = 0;
@@ -888,7 +882,6 @@
       document.querySelectorAll('[data-edit-key]').forEach(element => element.setAttribute('contenteditable', String(enabled)));
       document.getElementById('adminEntry').setAttribute('aria-label', enabled ? '網站目前在編輯模式' : '進入網站編輯模式');
       if (enabled) adminStatus.textContent = '編輯模式已開啟；點選文字修改，或按照片上的「更換照片」。';
-      if (enabled) showHeroFrame(0);
       renderPortfolio(activeFilter);
     }
 
@@ -918,27 +911,13 @@
       }
     }
 
-    /* ── 視覺行為：導覽換色、主圖交替、逐項進場 ── */
+    /* ── 視覺行為：導覽換色、逐項進場 ── */
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     function onScroll() {
       const y = window.scrollY;
       /* 導覽列在夜色 hero 上是深色，離開 hero 後換成紙色 */
       siteNav.classList.toggle('scrolled', y > heroSection.offsetTop + heroSection.offsetHeight - siteNav.offsetHeight);
-    }
-
-    function showHeroFrame(index) {
-      heroFrameIndex = index;
-      heroFrames.forEach((image, i) => image.classList.toggle('is-on', i === index));
-    }
-
-    /* 主圖像房間裡的光慢慢移動：三張同構圖的作品每 6 秒交替，分頁隱藏或編輯時暫停 */
-    function setupHeroFade() {
-      if (reduceMotion || heroFrames.length < 2) return;
-      window.setInterval(() => {
-        if (document.hidden || adminEditing) return;
-        showHeroFrame((heroFrameIndex + 1) % heroFrames.length);
-      }, 6000);
     }
 
     function setupReveals() {
@@ -960,7 +939,6 @@
       const today = new Date();
       document.getElementById('bookingDate').min = new Date(today.getTime() - today.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
       setupReveals();
-      setupHeroFade();
       onScroll();
       await loadContent();
     });
