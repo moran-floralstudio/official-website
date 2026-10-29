@@ -1,5 +1,5 @@
 export const TEXT_KEYS = Object.freeze([
-  'announcement', 'heroLine1', 'heroLine2', 'heroCopy', 'heroCaption',
+  'announcement', 'heroLine1', 'heroLine2', 'heroWhat', 'heroCopy', 'heroCaption',
   'philosophyTitle', 'philosophyQuote',
   'valueTitle1', 'valueBody1', 'valueTitle2', 'valueBody2', 'valueTitle3', 'valueBody3',
   'servicesTitle', 'servicesLead',
